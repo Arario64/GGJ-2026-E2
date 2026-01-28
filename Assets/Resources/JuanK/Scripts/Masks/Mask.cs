@@ -5,10 +5,17 @@ public class Mask : MonoBehaviour
 
   [SerializeField] private float m_maxPower;
   [SerializeField] private float m_useCost;
-  [SerializeField] private bool m_isFreeToUse = false;
-  private float m_currPower;
 
-  public virtual bool Activate()
+  [Tooltip("If true, the mask can be used without power cost")]
+  [SerializeField] private bool m_isFreeToUse = false;
+  protected float m_currPower;
+
+  private void Start()
+  {
+    m_currPower = m_maxPower;
+  }
+
+  private bool CanBeActivated()
   {
     if (m_isFreeToUse)
     {
@@ -20,13 +27,23 @@ public class Mask : MonoBehaviour
     {
       return false;
     }
-    if (m_currPower <= 0.0f)
+
+    return true;
+  }
+
+  public virtual bool Activate()
+  {
+    if (!CanBeActivated())
     {
-      m_currPower = 0.0f;
       return false;
     }
     // Power is consumed
     m_currPower -= m_useCost;
+
+    if (m_currPower <= 0.0f)
+    {
+      m_currPower = 0.0f;
+    }
     return true;
   }
 

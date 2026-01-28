@@ -6,7 +6,14 @@ public class InvisibilityMask : Mask
 
   private void Update()
   {
-    Debug.Log(Time.deltaTime);
+    if (m_active)
+    {
+      Debug.Log(m_currPower);
+      if (!Activate())
+      {
+        Deactivate();
+      }
+    }
   }
 
   public override bool Activate()
@@ -24,7 +31,6 @@ public class InvisibilityMask : Mask
 
     player.IsInvisible = true;
     m_active = true;
-
     return true;
   }
 
