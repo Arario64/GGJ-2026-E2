@@ -9,15 +9,16 @@ public class Mask : ScriptableObject
 
 
 
-  public virtual void Activate()
+  public virtual bool Activate()
   {
     // Check if power can be used
     if (m_currPower < m_useCost)
     {
-      return;
+      return false;
     }
     // Power is consumed
     m_currPower -= m_useCost;
+    return true;
   }
 
   public virtual void Deactivate()

@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
 
   private List<Mask> m_masks = new();
 
+  private bool m_isInvisible = false;
+
   #endregion Members
 
   #region Getters / Setters
@@ -78,6 +80,12 @@ public class Player : MonoBehaviour
     }
   }
 
+  public bool IsInvisible
+  {
+    get { return m_isInvisible; }
+    set { m_isInvisible = value; }
+  }
+
   public IA_Player InputActions
   {
     get { return GameManager.Instance.InputActions; }
@@ -102,9 +110,9 @@ public class Player : MonoBehaviour
     InputActions.Playing.Move.performed += OnMoveInput;
     InputActions.Playing.Move.canceled += OnCancelMoveInput;
 
-    InvisibilityMask invMask = ScriptableObject.CreateInstance<InvisibilityMask>();
-    m_masks.Add(invMask);
-    m_masks[0].Activate();
+    //InvisibilityMask invMask = ScriptableObject.CreateInstance<InvisibilityMask>();
+    //m_masks.Add(invMask);
+    //m_masks[0].Activate();
   }
 
 
