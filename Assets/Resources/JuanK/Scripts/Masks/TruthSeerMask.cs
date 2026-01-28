@@ -4,14 +4,20 @@ public class TruthSeerMask : Mask
 {
   bool m_active = false;
 
-  public override bool Activate()
+  private void Update()
   {
     if (m_active)
     {
-      Deactivate();
-      return true;
+      Debug.Log(m_currPower);
+      if (!Activate())
+      {
+        Deactivate();
+      }
     }
+  }
 
+  public override bool Activate()
+  {
     if (!base.Activate())
     {
       return false;

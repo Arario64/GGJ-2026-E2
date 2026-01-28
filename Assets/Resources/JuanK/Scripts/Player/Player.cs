@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
 
   private bool m_isInvisible = false;
   private bool m_isSeeingTruth = false;
+  private bool m_canTeleport = false;
 
   #endregion Members
 
@@ -98,6 +99,12 @@ public class Player : MonoBehaviour
       m_isSeeingTruth = value;
       OnSeeingTruth?.Invoke(m_isSeeingTruth);
     }
+  }
+
+  public bool CanTeleport
+  {
+    get { return m_canTeleport; }
+    set { m_canTeleport = value; }
   }
 
   public IA_Player InputActions
