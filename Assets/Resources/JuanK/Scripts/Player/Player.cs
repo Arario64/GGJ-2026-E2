@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Player : MonoBehaviour
 {
+  public event Action<bool> OnSeeingTruth;
+
   #region Members
 
   private FSM m_FSM;
@@ -19,8 +21,10 @@ public class Player : MonoBehaviour
   private SpriteRenderer m_spriteRen;
 
   private List<Mask> m_masks = new();
+  private int m_currMask;
 
   private bool m_isInvisible = false;
+  private bool m_isSeeingTruth = false;
 
   #endregion Members
 
@@ -86,6 +90,16 @@ public class Player : MonoBehaviour
     set { m_isInvisible = value; }
   }
 
+  public bool IsSeeingTruth
+  {
+    get { return m_isSeeingTruth; }
+    set
+    {
+      m_isSeeingTruth = value;
+      OnSeeingTruth?.Invoke(m_isSeeingTruth);
+    }
+  }
+
   public IA_Player InputActions
   {
     get { return GameManager.Instance.InputActions; }
@@ -109,8 +123,12 @@ public class Player : MonoBehaviour
 
     InputActions.Playing.Move.performed += OnMoveInput;
     InputActions.Playing.Move.canceled += OnCancelMoveInput;
+    InputActions.Playing.ActivateMask.performed += OnActivateMask;
+    InputActions.Playing.ActivateMask.canceled += OnDeactivateMask;
 
+    //TruthSeerMask seerMask = ScriptableObject.CreateInstance<TruthSeerMask>();
     //InvisibilityMask invMask = ScriptableObject.CreateInstance<InvisibilityMask>();
+    //m_masks.Add(seerMask);
     //m_masks.Add(invMask);
     //m_masks[0].Activate();
   }
@@ -119,6 +137,9 @@ public class Player : MonoBehaviour
   private void OnDisable()
   {
     InputActions.Playing.Move.performed -= OnMoveInput;
+    InputActions.Playing.Move.canceled -= OnCancelMoveInput;
+    InputActions.Playing.ActivateMask.performed -= OnActivateMask;
+    InputActions.Playing.ActivateMask.canceled -= OnDeactivateMask;
   }
 
   private void OnMoveInput(InputAction.CallbackContext context)
@@ -131,9 +152,46 @@ public class Player : MonoBehaviour
     m_movingDir = Vector2.zero;
   }
 
+  private void OnActivateMask(InputAction.CallbackContext context)
+  {
+    int count = m_masks.Count;
+    if (m_currMask >= 0 && m_currMask < count)
+    {
+      Mask mask = m_masks[m_currMask];
+      mask.Activate();
+
+    }
+  }
+
+  private void OnDeactivateMask(InputAction.CallbackContext context)
+  {
+    int count = m_masks.Count;
+    if (m_currMask >= 0 && m_currMask < count)
+    {
+      Mask mask = m_masks[m_currMask];
+      mask.Deactivate();
+
+    }
+  }
+
   // Update is called once per frame
   void Update()
   {
     StateMachine.Update();
+  }
+
+  private void OnTriggerEnter2D(Collider2D collision)
+  {
+    if (collision.CompareTag("Mask"))
+    {
+      Mask mask = collision.GetComponent<Mask>();
+      if (mask && !m_masks.Contains(mask))
+      {
+        m_masks.Add(mask);
+        mask.transform.parent = transform;
+        mask.GetComponent<SpriteRenderer>().enabled = false;
+        mask.GetComponent<PolygonCollider2D>().enabled = false;
+      }
+    }
   }
 }
