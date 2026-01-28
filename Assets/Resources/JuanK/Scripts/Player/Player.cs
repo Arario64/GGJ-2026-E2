@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Player : MonoBehaviour
 {
+  public event Action<bool> OnSeeingTruth;
+
   #region Members
 
   private FSM m_FSM;
@@ -19,8 +21,10 @@ public class Player : MonoBehaviour
   private SpriteRenderer m_spriteRen;
 
   private List<Mask> m_masks = new();
+  private int m_currMask;
 
   private bool m_isInvisible = false;
+  private bool m_isSeeingTruth = false;
 
   #endregion Members
 
@@ -86,6 +90,16 @@ public class Player : MonoBehaviour
     set { m_isInvisible = value; }
   }
 
+  public bool IsSeeingTruth
+  {
+    get { return m_isSeeingTruth; }
+    set
+    {
+      m_isSeeingTruth = value;
+      OnSeeingTruth?.Invoke(m_isSeeingTruth);
+    }
+  }
+
   public IA_Player InputActions
   {
     get { return GameManager.Instance.InputActions; }
@@ -109,9 +123,12 @@ public class Player : MonoBehaviour
 
     InputActions.Playing.Move.performed += OnMoveInput;
     InputActions.Playing.Move.canceled += OnCancelMoveInput;
+    InputActions.Playing.ActivateMask.performed += OnActivateMask;
 
-    //InvisibilityMask invMask = ScriptableObject.CreateInstance<InvisibilityMask>();
-    //m_masks.Add(invMask);
+    TruthSeerMask seerMask = ScriptableObject.CreateInstance<TruthSeerMask>();
+    InvisibilityMask invMask = ScriptableObject.CreateInstance<InvisibilityMask>();
+    m_masks.Add(seerMask);
+    m_masks.Add(invMask);
     //m_masks[0].Activate();
   }
 
@@ -119,6 +136,8 @@ public class Player : MonoBehaviour
   private void OnDisable()
   {
     InputActions.Playing.Move.performed -= OnMoveInput;
+    InputActions.Playing.Move.canceled -= OnCancelMoveInput;
+    InputActions.Playing.ActivateMask.performed -= OnActivateMask;
   }
 
   private void OnMoveInput(InputAction.CallbackContext context)
@@ -129,6 +148,26 @@ public class Player : MonoBehaviour
   private void OnCancelMoveInput(InputAction.CallbackContext context)
   {
     m_movingDir = Vector2.zero;
+  }
+
+  private void OnActivateMask(InputAction.CallbackContext context)
+  {
+    Mask mask = m_masks[m_currMask];
+
+    if (mask)
+    {
+      mask.Activate();
+    }
+  }
+
+  private void OnDeactivateMask(InputAction.CallbackContext context)
+  {
+    Mask mask = m_masks[m_currMask];
+
+    if (mask)
+    {
+      mask.Deactivate();
+    }
   }
 
   // Update is called once per frame
