@@ -12,7 +12,6 @@ public class InvisibilityMask : Mask
   {
     if (m_active)
     {
-      //Debug.Log(m_currPower);
       if (!Activate())
       {
         Deactivate();

@@ -8,7 +8,6 @@ public class TruthSeerMask : Mask
   {
     if (m_active)
     {
-      Debug.Log(m_currPower);
       if (!Activate())
       {
         Deactivate();
