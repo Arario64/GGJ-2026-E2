@@ -2,13 +2,17 @@ using UnityEngine;
 
 public class InvisibilityMask : Mask
 {
+  [Tooltip("0 means full invisible and 1 full visible.")]
+  [SerializeField, Range(0.0f, 1.0f)] float m_opacity = 0.5f;
+
+
   bool m_active = false;
 
   private void Update()
   {
     if (m_active)
     {
-      Debug.Log(m_currPower);
+      //Debug.Log(m_currPower);
       if (!Activate())
       {
         Deactivate();
@@ -26,7 +30,7 @@ public class InvisibilityMask : Mask
     Player player = GameManager.Instance.Player;
 
     Color invisibleColor = player.SpriteRen.color;
-    invisibleColor.a = 0.5f;
+    invisibleColor.a = m_opacity;
     player.SpriteRen.color = invisibleColor;
 
     player.IsInvisible = true;

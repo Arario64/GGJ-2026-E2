@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
   [SerializeField] private float m_moveSpeed = 5.0f;
   private Vector2 m_movingDir;
 
+  private Rigidbody2D m_rb;
   private SpriteRenderer m_spriteRen;
 
   private List<Mask> m_masks = new();
@@ -79,9 +80,21 @@ public class Player : MonoBehaviour
     get {
       if (m_spriteRen == null)
       {
-        m_spriteRen = gameObject.GetComponent<SpriteRenderer>();
+        m_spriteRen = GetComponent<SpriteRenderer>();
       }
       return m_spriteRen;
+    }
+  }
+
+  public Rigidbody2D RB
+  {
+    get
+    {
+      if (m_rb == null)
+      {
+        m_rb = GetComponent<Rigidbody2D>();
+      }
+      return m_rb;
     }
   }
 
@@ -125,6 +138,8 @@ public class Player : MonoBehaviour
     CustomAssert.IsNotNull(StateMachine);
     CustomAssert.IsNotNull(IdleState);
     CustomAssert.IsNotNull(MoveState);
+    CustomAssert.IsNotNull(SpriteRen);
+    CustomAssert.IsNotNull(RB);
 
     StateMachine.Init(IdleState);
 
@@ -185,6 +200,7 @@ public class Player : MonoBehaviour
   void Update()
   {
     StateMachine.Update();
+    RB.WakeUp();
   }
 
   private void OnTriggerEnter2D(Collider2D collision)
