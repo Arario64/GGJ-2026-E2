@@ -124,11 +124,12 @@ public class Player : MonoBehaviour
     InputActions.Playing.Move.performed += OnMoveInput;
     InputActions.Playing.Move.canceled += OnCancelMoveInput;
     InputActions.Playing.ActivateMask.performed += OnActivateMask;
+    InputActions.Playing.ActivateMask.canceled += OnDeactivateMask;
 
-    TruthSeerMask seerMask = ScriptableObject.CreateInstance<TruthSeerMask>();
-    InvisibilityMask invMask = ScriptableObject.CreateInstance<InvisibilityMask>();
-    m_masks.Add(seerMask);
-    m_masks.Add(invMask);
+    //TruthSeerMask seerMask = ScriptableObject.CreateInstance<TruthSeerMask>();
+    //InvisibilityMask invMask = ScriptableObject.CreateInstance<InvisibilityMask>();
+    //m_masks.Add(seerMask);
+    //m_masks.Add(invMask);
     //m_masks[0].Activate();
   }
 
@@ -138,6 +139,7 @@ public class Player : MonoBehaviour
     InputActions.Playing.Move.performed -= OnMoveInput;
     InputActions.Playing.Move.canceled -= OnCancelMoveInput;
     InputActions.Playing.ActivateMask.performed -= OnActivateMask;
+    InputActions.Playing.ActivateMask.canceled -= OnDeactivateMask;
   }
 
   private void OnMoveInput(InputAction.CallbackContext context)
@@ -152,21 +154,23 @@ public class Player : MonoBehaviour
 
   private void OnActivateMask(InputAction.CallbackContext context)
   {
-    Mask mask = m_masks[m_currMask];
-
-    if (mask)
+    int count = m_masks.Count;
+    if (m_currMask >= 0 && m_currMask < count)
     {
+      Mask mask = m_masks[m_currMask];
       mask.Activate();
+
     }
   }
 
   private void OnDeactivateMask(InputAction.CallbackContext context)
   {
-    Mask mask = m_masks[m_currMask];
-
-    if (mask)
+    int count = m_masks.Count;
+    if (m_currMask >= 0 && m_currMask < count)
     {
+      Mask mask = m_masks[m_currMask];
       mask.Deactivate();
+
     }
   }
 
@@ -174,5 +178,20 @@ public class Player : MonoBehaviour
   void Update()
   {
     StateMachine.Update();
+  }
+
+  private void OnTriggerEnter2D(Collider2D collision)
+  {
+    if (collision.CompareTag("Mask"))
+    {
+      Mask mask = collision.GetComponent<Mask>();
+      if (mask && !m_masks.Contains(mask))
+      {
+        m_masks.Add(mask);
+        mask.transform.parent = transform;
+        mask.GetComponent<SpriteRenderer>().enabled = false;
+        mask.GetComponent<PolygonCollider2D>().enabled = false;
+      }
+    }
   }
 }

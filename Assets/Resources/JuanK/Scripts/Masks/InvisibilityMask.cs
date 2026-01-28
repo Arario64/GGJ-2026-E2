@@ -4,14 +4,13 @@ public class InvisibilityMask : Mask
 {
   bool m_active = false;
 
+  private void Update()
+  {
+    Debug.Log(Time.deltaTime);
+  }
+
   public override bool Activate()
   {
-    if (m_active)
-    {
-      Deactivate();
-      return true;
-    }
-
     if (!base.Activate())
     {
       return false;
