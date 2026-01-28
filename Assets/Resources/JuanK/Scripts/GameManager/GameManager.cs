@@ -216,7 +216,7 @@ public class GameManager : MonoBehaviour
 
   private void OnResumeGame(InputAction.CallbackContext context)
   {
-    Paused = false;
+    Playing = true;
   }
 
   private void OnResetGame(InputAction.CallbackContext context)

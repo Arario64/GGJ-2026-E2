@@ -266,6 +266,17 @@ public partial class @IA_Player: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""a3eec31c-9f0a-4a8b-b00e-adadb26038bf"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""da1dc362-3ba0-4aa1-88d3-4b101a8bb843"",
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",

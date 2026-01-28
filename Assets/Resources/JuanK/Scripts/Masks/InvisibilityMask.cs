@@ -15,12 +15,21 @@ public class InvisibilityMask : Mask
 
   }
 
-  public override void Activate()
+  public override bool Activate()
   {
-    base.Activate();
+    if (!base.Activate())
+    {
+      return false;
+    }
 
-    Color invisibleColor = GameManager.Instance.Player.SpriteRen.color;
+    Player player = GameManager.Instance.Player;
+
+    Color invisibleColor = player.SpriteRen.color;
     invisibleColor.a = 0.5f;
-    GameManager.Instance.Player.SpriteRen.color = invisibleColor;
+    player.SpriteRen.color = invisibleColor;
+
+    player.IsInvisible = true;
+
+    return true;
   }
 }
