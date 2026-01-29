@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
+  [SerializeField] private GameObject m_laserPrefab;
+  [SerializeField] private float m_fireRate = 1.0f;
+  private float m_nextFireTime = 0.0f;
+  private bool m_isFiring = false;
+
   private SpriteRenderer SpriteRen;
   private Color OGColor;
 
@@ -15,7 +20,25 @@ public class Turret : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-
+    if (m_isFiring)
+    {
+      float time = Time.time;
+      m_nextFireTime += Time.deltaTime;
+      if (m_nextFireTime >= m_fireRate)
+      {
+        Vector2 direction = GameManager.Instance.Player.transform.position - transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle - 90.0f, Vector3.forward);
+        GameObject laserGO = Instantiate(m_laserPrefab, transform.position, rotation);
+        Laser laser = laserGO.GetComponent<Laser>();
+        if (laser != null)
+        {
+          laser.SetDirection(direction);
+        }
+        m_nextFireTime = 0.0f;
+      }
+    }
   }
 
   private void OnTriggerStay2D(Collider2D collision)
@@ -45,11 +68,13 @@ public class Turret : MonoBehaviour
   {
     //Just visual function for now
     SpriteRen.color = Color.red;
+    m_isFiring = true;
   }
 
   private void StopAttacking()
   {
     //Just visual function for now
     SpriteRen.color = OGColor;
+    m_isFiring = false;
   }
 }
