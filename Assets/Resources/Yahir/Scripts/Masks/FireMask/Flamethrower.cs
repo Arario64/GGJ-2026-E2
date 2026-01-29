@@ -56,7 +56,7 @@ public class Flamethrower : MonoBehaviour
         _active = true;
     }
 
-    public void turnOffFlamethrower()
+    public void deactivateFlamethrower()
     {
         _active = false;
     }

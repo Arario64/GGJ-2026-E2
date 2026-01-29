@@ -41,6 +41,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Inventory",
+                    "type": "Button",
+                    "id": "6536a65c-30f6-488b-8971-ab09f3cbaab0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -217,6 +226,61 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "ActivateMask",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "67079a8d-6d98-493a-92c4-c18bfae758e6",
+                    "path": "<Keyboard>/1",
+                    "interactions": "Press",
+                    "processors": "Scale",
+                    "groups": "",
+                    "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f05f36e5-16ce-4747-93a0-8833c0ee3ba8",
+                    "path": "<Keyboard>/2",
+                    "interactions": "Press",
+                    "processors": "Scale(factor=2)",
+                    "groups": "",
+                    "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "99331339-d6ec-4baf-926f-9afbde0c4f5c",
+                    "path": "<Keyboard>/3",
+                    "interactions": "Press",
+                    "processors": "Scale(factor=3)",
+                    "groups": "",
+                    "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a1db222f-e92d-4263-a6bf-d2d14e464b40",
+                    "path": "<Keyboard>/4",
+                    "interactions": "Press",
+                    "processors": "Scale(factor=4)",
+                    "groups": "",
+                    "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2a84e096-0f8a-49a1-b7d0-ce104341d2b6",
+                    "path": "<Keyboard>/5",
+                    "interactions": "Press",
+                    "processors": "Scale(factor=5)",
+                    "groups": "",
+                    "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

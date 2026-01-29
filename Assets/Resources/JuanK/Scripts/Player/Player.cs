@@ -133,6 +133,8 @@ public class Player : MonoBehaviour
     InputActions.Playing.ActivateMask.performed += OnActivateMask;
     InputActions.Playing.ActivateMask.canceled += OnDeactivateMask;
 
+    InputActions.Playing.Inventory.performed += OnInventoryInput;
+
     //TruthSeerMask seerMask = ScriptableObject.CreateInstance<TruthSeerMask>();
     //InvisibilityMask invMask = ScriptableObject.CreateInstance<InvisibilityMask>();
     //m_masks.Add(seerMask);
@@ -181,8 +183,26 @@ public class Player : MonoBehaviour
     }
   }
 
-  // Update is called once per frame
-  void Update()
+  private void OnInventoryInput(InputAction.CallbackContext context)
+  {
+        if (!context.performed) return;
+
+        int slot = Mathf.RoundToInt(context.ReadValue<float>()) - 1;
+        m_currMask = slot;
+  }
+
+  void OnInventoryInputMouse(InputAction.CallbackContext context)
+  {
+      float scroll = context.ReadValue<float>();
+
+      if (Mathf.Abs(scroll) < 0.1f) return;
+
+      m_currMask += scroll > 0 ? -1 : 1;
+      m_currMask = (m_currMask + 5) % 5;
+  }
+
+    // Update is called once per frame
+    void Update()
   {
     StateMachine.Update();
   }
@@ -196,6 +216,7 @@ public class Player : MonoBehaviour
       {
         m_masks.Add(mask);
         mask.transform.parent = transform;
+        mask.transform.localPosition = Vector3.zero;
         mask.GetComponent<SpriteRenderer>().enabled = false;
         mask.GetComponent<PolygonCollider2D>().enabled = false;
       }
