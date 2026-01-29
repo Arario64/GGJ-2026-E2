@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Mask
   - Fire
+  - Warp
+  - Hazard
+  - Explosion
+  - Abyss
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

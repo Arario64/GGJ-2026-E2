@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
   private bool m_isSeeingTruth = false;
   private bool m_canTeleport = false;
 
+  private Vector2 m_lastCheckpoint;
   Warp m_touchingWarp;
 
   #endregion Members
@@ -132,6 +133,12 @@ public class Player : MonoBehaviour
     get { return GameManager.Instance.InputActions; }
   }
 
+  public Vector2 LastCheckpoint
+  {
+    get { return m_lastCheckpoint; }
+    set { m_lastCheckpoint = value; }
+  }
+
   #endregion Getters / Setters
 
   private void Awake()
@@ -155,11 +162,7 @@ public class Player : MonoBehaviour
     InputActions.Playing.ActivateMask.performed += OnActivateMask;
     InputActions.Playing.ActivateMask.canceled += OnDeactivateMask;
 
-    //TruthSeerMask seerMask = ScriptableObject.CreateInstance<TruthSeerMask>();
-    //InvisibilityMask invMask = ScriptableObject.CreateInstance<InvisibilityMask>();
-    //m_masks.Add(seerMask);
-    //m_masks.Add(invMask);
-    //m_masks[0].Activate();
+    LastCheckpoint = transform.position;
   }
 
 
@@ -232,6 +235,17 @@ public class Player : MonoBehaviour
         m_touchingWarp = warp;
       }
     }
+
+    if (collision.CompareTag("Checkpoint"))
+    {
+      LastCheckpoint = collision.transform.position;
+    }
+
+    if (collision.CompareTag("Hazard"))
+    {
+      //TODO: Check if create a death state with animation
+      transform.position = LastCheckpoint;
+    }
   }
 
   private void OnTriggerExit2D(Collider2D collision)
@@ -246,4 +260,5 @@ public class Player : MonoBehaviour
     }
   }
 
+  
 }

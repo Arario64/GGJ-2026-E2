@@ -53,7 +53,7 @@ public class Torch : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D collision)
   {
-    if (collision.CompareTag("Fire"))
+    if (collision.CompareTag("Fire") || collision.CompareTag("Explosion"))
     {
       if (!m_isLit)
       {
