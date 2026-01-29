@@ -241,7 +241,7 @@ public class Player : MonoBehaviour
       LastCheckpoint = collision.transform.position;
     }
 
-    if (collision.CompareTag("Hazard"))
+    if (collision.CompareTag("Hazard") || collision.CompareTag("Explotion"))
     {
       //TODO: Check if create a death state with animation
       transform.position = LastCheckpoint;
