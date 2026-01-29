@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
   private bool m_isSeeingTruth = false;
   private bool m_canTeleport = false;
 
+  Warp m_touchingWarp;
+
   #endregion Members
 
   #region Getters / Setters
@@ -118,6 +120,11 @@ public class Player : MonoBehaviour
   {
     get { return m_canTeleport; }
     set { m_canTeleport = value; }
+  }
+
+  public Warp TouchingWarp
+  {
+    get { return m_touchingWarp; }
   }
 
   public IA_Player InputActions
@@ -216,5 +223,27 @@ public class Player : MonoBehaviour
         mask.GetComponent<PolygonCollider2D>().enabled = false;
       }
     }
+
+    if (collision.CompareTag("Warp"))
+    {
+      Warp warp = collision.GetComponent<Warp>();
+      if (warp)
+      {
+        m_touchingWarp = warp;
+      }
+    }
   }
+
+  private void OnTriggerExit2D(Collider2D collision)
+  {
+    if (collision.CompareTag("Warp"))
+    {
+      Warp warp = collision.GetComponent<Warp>();
+      if (warp && warp == m_touchingWarp)
+      {
+        m_touchingWarp = null;
+      }
+    }
+  }
+
 }

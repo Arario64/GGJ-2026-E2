@@ -6,12 +6,19 @@ public class TeleportMask : Mask
 
   public override bool Activate()
   {
+    Player player = GameManager.Instance.Player;
+
+    if (player.TouchingWarp == null)
+    {
+      return false;
+    }
+
     if (!base.Activate())
     {
       return false;
     }
 
-    GameManager.Instance.Player.CanTeleport = true;
+    player.CanTeleport = true;
 
     return true;
   }
