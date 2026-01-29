@@ -22,6 +22,10 @@ public class PlayerMoveState : IState
 
   public IState CheckExitConditions()
   {
+    if (m_player.MovingDir == Vector2.zero)
+    {
+      return m_player.IdleState;
+    }
 
     return this;
   }

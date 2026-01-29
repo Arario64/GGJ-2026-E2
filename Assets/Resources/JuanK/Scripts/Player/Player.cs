@@ -164,12 +164,6 @@ public class Player : MonoBehaviour
 
     LastCheckpoint = transform.position;
     InputActions.Playing.Inventory.performed += OnInventoryInput;
-
-    //TruthSeerMask seerMask = ScriptableObject.CreateInstance<TruthSeerMask>();
-    //InvisibilityMask invMask = ScriptableObject.CreateInstance<InvisibilityMask>();
-    //m_masks.Add(seerMask);
-    //m_masks.Add(invMask);
-    //m_masks[0].Activate();
   }
 
 
