@@ -8,9 +8,9 @@ TagManager:
   - Fire
   - Warp
   - Hazard
-  - Explosion
   - Abyss
   - Checkpoint
+  - Explotion
   layers:
   - Default
   - TransparentFX
