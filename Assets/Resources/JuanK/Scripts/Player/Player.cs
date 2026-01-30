@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(SpriteRenderer))]
 public class Player : MonoBehaviour
 {
   public event Action<bool> OnSeeingTruth;
@@ -18,6 +17,7 @@ public class Player : MonoBehaviour
   [SerializeField] private float m_moveSpeed = 5.0f;
   private Vector2 m_movingDir;
 
+  private Rigidbody2D m_rb;
   private SpriteRenderer m_spriteRen;
 
   private List<Mask> m_masks = new();
@@ -26,6 +26,9 @@ public class Player : MonoBehaviour
   private bool m_isInvisible = false;
   private bool m_isSeeingTruth = false;
   private bool m_canTeleport = false;
+
+  private Vector2 m_lastCheckpoint;
+  Warp m_touchingWarp;
 
   #endregion Members
 
@@ -79,9 +82,21 @@ public class Player : MonoBehaviour
     get {
       if (m_spriteRen == null)
       {
-        m_spriteRen = gameObject.GetComponent<SpriteRenderer>();
+        m_spriteRen = GetComponentInChildren<SpriteRenderer>();
       }
       return m_spriteRen;
+    }
+  }
+
+  public Rigidbody2D RB
+  {
+    get
+    {
+      if (m_rb == null)
+      {
+        m_rb = GetComponent<Rigidbody2D>();
+      }
+      return m_rb;
     }
   }
 
@@ -107,9 +122,20 @@ public class Player : MonoBehaviour
     set { m_canTeleport = value; }
   }
 
+  public Warp TouchingWarp
+  {
+    get { return m_touchingWarp; }
+  }
+
   public IA_Player InputActions
   {
     get { return GameManager.Instance.InputActions; }
+  }
+
+  public Vector2 LastCheckpoint
+  {
+    get { return m_lastCheckpoint; }
+    set { m_lastCheckpoint = value; }
   }
 
   #endregion Getters / Setters
@@ -125,6 +151,8 @@ public class Player : MonoBehaviour
     CustomAssert.IsNotNull(StateMachine);
     CustomAssert.IsNotNull(IdleState);
     CustomAssert.IsNotNull(MoveState);
+    CustomAssert.IsNotNull(SpriteRen);
+    CustomAssert.IsNotNull(RB);
 
     StateMachine.Init(IdleState);
 
@@ -133,13 +161,8 @@ public class Player : MonoBehaviour
     InputActions.Playing.ActivateMask.performed += OnActivateMask;
     InputActions.Playing.ActivateMask.canceled += OnDeactivateMask;
 
+    LastCheckpoint = transform.position;
     InputActions.Playing.Inventory.performed += OnInventoryInput;
-
-    //TruthSeerMask seerMask = ScriptableObject.CreateInstance<TruthSeerMask>();
-    //InvisibilityMask invMask = ScriptableObject.CreateInstance<InvisibilityMask>();
-    //m_masks.Add(seerMask);
-    //m_masks.Add(invMask);
-    //m_masks[0].Activate();
   }
 
 
@@ -205,6 +228,7 @@ public class Player : MonoBehaviour
     void Update()
   {
     StateMachine.Update();
+    RB.WakeUp();
   }
 
   private void OnTriggerEnter2D(Collider2D collision)
@@ -217,9 +241,56 @@ public class Player : MonoBehaviour
         m_masks.Add(mask);
         mask.transform.parent = transform;
         mask.transform.localPosition = Vector3.zero;
-        mask.GetComponent<SpriteRenderer>().enabled = false;
-        mask.GetComponent<PolygonCollider2D>().enabled = false;
+        mask.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        mask.GetComponent<BoxCollider2D>().enabled = false;
+      }
+    }
+
+    if (collision.CompareTag("Warp"))
+    {
+      Warp warp = collision.GetComponent<Warp>();
+      if (warp)
+      {
+        m_touchingWarp = warp;
+      }
+    }
+
+    if (collision.CompareTag("Checkpoint"))
+    {
+      LastCheckpoint = collision.transform.position;
+    }
+
+    if (collision.CompareTag("Hazard") || collision.CompareTag("Explotion"))
+    {
+      //TODO: Check if create a death state with animation
+      transform.position = LastCheckpoint;
+    }
+
+  }
+
+  private void OnTriggerStay2D(Collider2D collision)
+  {
+    if (collision.CompareTag("Water") || collision.CompareTag("Abyss"))
+    {
+      WaterIceAbyss waterIce = collision.GetComponent<WaterIceAbyss>();
+      if (waterIce && !waterIce.IsFrozen)
+      {
+        transform.position = LastCheckpoint;
       }
     }
   }
+
+  private void OnTriggerExit2D(Collider2D collision)
+  {
+    if (collision.CompareTag("Warp"))
+    {
+      Warp warp = collision.GetComponent<Warp>();
+      if (warp && warp == m_touchingWarp)
+      {
+        m_touchingWarp = null;
+      }
+    }
+  }
+
+  
 }
