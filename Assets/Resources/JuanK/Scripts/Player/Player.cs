@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(SpriteRenderer))]
 public class Player : MonoBehaviour
 {
   public event Action<bool> OnSeeingTruth;
@@ -83,7 +82,7 @@ public class Player : MonoBehaviour
     get {
       if (m_spriteRen == null)
       {
-        m_spriteRen = GetComponent<SpriteRenderer>();
+        m_spriteRen = GetComponentInChildren<SpriteRenderer>();
       }
       return m_spriteRen;
     }
@@ -242,8 +241,8 @@ public class Player : MonoBehaviour
         m_masks.Add(mask);
         mask.transform.parent = transform;
         mask.transform.localPosition = Vector3.zero;
-        mask.GetComponent<SpriteRenderer>().enabled = false;
-        mask.GetComponent<PolygonCollider2D>().enabled = false;
+        mask.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        mask.GetComponent<BoxCollider2D>().enabled = false;
       }
     }
 
@@ -265,6 +264,19 @@ public class Player : MonoBehaviour
     {
       //TODO: Check if create a death state with animation
       transform.position = LastCheckpoint;
+    }
+
+  }
+
+  private void OnTriggerStay2D(Collider2D collision)
+  {
+    if (collision.CompareTag("Water") || collision.CompareTag("Abyss"))
+    {
+      WaterIceAbyss waterIce = collision.GetComponent<WaterIceAbyss>();
+      if (waterIce && !waterIce.IsFrozen)
+      {
+        transform.position = LastCheckpoint;
+      }
     }
   }
 

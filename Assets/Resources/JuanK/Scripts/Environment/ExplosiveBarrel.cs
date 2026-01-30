@@ -14,7 +14,7 @@ public class ExplosiveBarrel : MonoBehaviour
   void Start()
   {
     m_spriteRen = GetComponent<SpriteRenderer>();
-    m_explotionCollider = GetComponent<CircleCollider2D>();
+    m_explotionCollider = GetComponentInChildren<CircleCollider2D>();
 
     m_explotionCollider.enabled = false;
   }

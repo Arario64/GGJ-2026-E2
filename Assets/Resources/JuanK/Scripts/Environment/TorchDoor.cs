@@ -5,6 +5,7 @@ using UnityEngine;
 public class TorchDoor : MonoBehaviour
 {
   [SerializeField] private List<Torch> m_linkedTorches;
+  [SerializeField] private List<Torch> m_linkedTorches2;
   private float m_litCount = 0;
 
   private BoxCollider2D m_doorCollider;
