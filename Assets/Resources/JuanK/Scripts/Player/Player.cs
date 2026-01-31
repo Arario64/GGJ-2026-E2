@@ -176,6 +176,8 @@ public class Player : MonoBehaviour
 
     LastCheckpoint = transform.position;
     InputActions.Playing.Inventory.performed += OnInventoryInput;
+
+    InputActions.Playing.SelectSlot.performed += OnInventoryInputMouse;
   }
 
 

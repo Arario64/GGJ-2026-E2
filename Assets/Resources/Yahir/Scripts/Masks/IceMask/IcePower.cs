@@ -57,9 +57,6 @@ public class IcePower : MonoBehaviour
                 if (m_currentLength <= 0.01f)
                 {
                     gameObject.SetActive(false);
-                    IceMask iceMask = GetComponentInParent<IceMask>();
-                    iceMask.transform.parent = GameManager.Instance.Player.transform;
-                    iceMask.transform.localPosition = Vector3.zero;
                     Destroy(gameObject);
                 }
                 _growthTime = 0.0f;
