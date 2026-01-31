@@ -5,12 +5,15 @@ public class IceMask : Mask
     [SerializeField]
     GameObject m_icePower;
 
+    GameObject _icePowerGO;
+
     IcePower _icePower;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        _icePower = m_icePower.GetComponent<IcePower>();
+
     }
 
     void Start()
@@ -26,9 +29,11 @@ public class IceMask : Mask
 
     public override bool Activate()
     {
-        m_icePower.SetActive(true);
+        _icePowerGO = Instantiate(m_icePower);
+        _icePower = _icePowerGO.GetComponent<IcePower>();
+        _icePowerGO.SetActive(true);
         _icePower.activeFlamethrower(GameManager.Instance.Player.MovingDir);
-        transform.parent = null;
+        _icePower.setGameObject(gameObject);
         return true;
     }
     public override void Deactivate()

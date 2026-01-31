@@ -5,6 +5,8 @@ public class IcePower : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D m_fireCollider;
 
+    GameObject _iceMaskGameObject;
+
     public float m_currentLength = 0f;
     public float m_maxLength = 4f;
     public float m_growSpeed = 1.0f;
@@ -15,7 +17,7 @@ public class IcePower : MonoBehaviour
 
     public float m_timeAtack = 0.5f;
 
-    private bool _active = true;
+    private bool _active = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -58,6 +60,7 @@ public class IcePower : MonoBehaviour
                     IceMask iceMask = GetComponentInParent<IceMask>();
                     iceMask.transform.parent = GameManager.Instance.Player.transform;
                     iceMask.transform.localPosition = Vector3.zero;
+                    Destroy(gameObject);
                 }
                 _growthTime = 0.0f;
             }
@@ -78,5 +81,11 @@ public class IcePower : MonoBehaviour
     public void deactivateFlamethrower()
     {
         //_active = false;
+    }
+
+    public void setGameObject(GameObject GO)
+    {
+        _iceMaskGameObject = GO;
+        transform.position = GO.transform.position;
     }
 }

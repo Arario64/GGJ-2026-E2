@@ -48,6 +48,7 @@ public class Flamethrower : MonoBehaviour
             if (m_currentLength <= 0.01f)
             {
                 gameObject.SetActive(false);
+                Destroy(gameObject);
             }
         }
     }
@@ -61,8 +62,7 @@ public class Flamethrower : MonoBehaviour
 
     public void deactivateFlamethrower()
     {
-        //_active = false;
-        //Destroy(gameObject);
+        _active = false;
     }
 
     public void setGameObject(GameObject GO)
