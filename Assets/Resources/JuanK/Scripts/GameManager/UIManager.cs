@@ -309,13 +309,13 @@ public class UIManager : MonoBehaviour
 
   private void Start()
   {
-    //Mask fireMask = FindAnyObjectByType<FireMask>();
+    Mask fireMask = FindAnyObjectByType<FireMask>();
     //Mask iceMask = FindAnyObjectByType<IceMask>();
     Mask invisibilityMask = FindAnyObjectByType<InvisibilityMask>();
     Mask truthMask = FindAnyObjectByType<TruthSeerMask>();
     Mask teleportMask = FindAnyObjectByType<TeleportMask>();
 
-    //fireMask.OnPowerChange += UpdateMaskPower;
+    fireMask.OnPowerChange += UpdateMaskPower;
     //iceMask.OnPowerChange += UpdateMaskPower;
     invisibilityMask.OnPowerChange += UpdateMaskPower;
     truthMask.OnPowerChange += UpdateMaskPower;

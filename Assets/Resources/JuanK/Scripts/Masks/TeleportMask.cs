@@ -28,6 +28,7 @@ public class TeleportMask : Mask
     }
 
     player.CanTeleport = true;
+    m_active = true;
 
     return true;
   }
@@ -35,6 +36,7 @@ public class TeleportMask : Mask
   public override void Deactivate()
   {
     GameManager.Instance.Player.CanTeleport = false;
+    m_active = false;
   }
 
 }

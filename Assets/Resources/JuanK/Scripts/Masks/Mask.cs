@@ -99,7 +99,7 @@ public class Mask : MonoBehaviour
   protected virtual void Update()
   {
     // Recharge power
-    if (m_currPower < m_maxPower)
+    if ((m_currPower < m_maxPower) && !m_active)
     {
       //Debug.Log($"Current Power: {m_currPower}");
       float time = Time.deltaTime;
