@@ -18,7 +18,7 @@ public class IceMask : Mask
 
     void Start()
     {
-
+        m_type = MaskTypes.ICE;
     }
 
     // Update is called once per frame

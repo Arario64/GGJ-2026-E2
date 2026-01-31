@@ -105,11 +105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ed3094e46afc04eb9d0f6b9bbfb4a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IceMask
-  m_maxPower: 0
-  m_useCost: 0
-  m_rechargeRate: 0
+  m_maxPower: 100
+  m_useCost: 10
+  m_rechargeRate: 50
   m_isFreeToUse: 0
-  m_color: {r: 1, g: 0, b: 0, a: 1}
+  m_color: {r: 0.21960784, g: 0.5882353, b: 0.84313726, a: 0.6}
   m_icePower: {fileID: 1770001376415403063, guid: 560251f7d0da1d74aa8bc900e0b47803, type: 3}
 --- !u!61 &1870119602121162636
 BoxCollider2D:

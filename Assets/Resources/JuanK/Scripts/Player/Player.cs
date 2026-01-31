@@ -185,7 +185,7 @@ public class Player : MonoBehaviour
 
     LastCheckpoint = transform.position;
 
-    GameManager.Instance.UI.UpdateKeysText(m_keysCollected);
+    //GameManager.Instance.UI.UpdateKeysText(m_keysCollected);
   }
 
 
@@ -340,7 +340,7 @@ public class Player : MonoBehaviour
     {
       Destroy(collision.gameObject);
       m_keysCollected++;
-      GameManager.Instance.UI.UpdateKeysText(m_keysCollected);
+      //GameManager.Instance.UI.UpdateKeysText(m_keysCollected);
     }
 
     if (collision.CompareTag("Hazard") || collision.CompareTag("Explotion"))
