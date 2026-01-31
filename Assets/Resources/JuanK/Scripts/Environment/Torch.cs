@@ -8,12 +8,35 @@ public class Torch : MonoBehaviour
 
   [SerializeField] private float m_lifetime = 5.0f;
 
-  [Tooltip("Torch will never unlit")]
+  [Tooltip("Torch won't unlit for time passing")]
   [SerializeField] private bool m_foreverLit = false;
   private float m_litTime = 0.0f;
   private bool m_isLit = false;
 
   SpriteRenderer m_spriteRen;
+
+  public bool IsForeverLit
+  {
+    get { return m_foreverLit; }
+    set { m_foreverLit = value; }
+  }
+
+  public bool IsLit
+  {
+    get { return m_isLit; }
+  }
+
+  public SpriteRenderer SpriteRen
+  {
+    get
+    {
+      if (m_spriteRen == null)
+      {
+        m_spriteRen = GetComponent<SpriteRenderer>();
+      }
+      return m_spriteRen;
+    }
+  }
 
   // Start is called once before the first execution of Update after the MonoBehaviour is created
   void Start()
@@ -37,17 +60,17 @@ public class Torch : MonoBehaviour
     }
   }
 
-  private void Lit()
+  public void Lit()
   {
     m_isLit = true;
-    m_spriteRen.color = Color.red;
+    SpriteRen.color = Color.red;
     OnLit?.Invoke();
   }
 
-  private void Unlit()
+  public void Unlit()
   {
     m_isLit = false;
-    m_spriteRen.color = Color.white;
+    SpriteRen.color = Color.white;
     OnUnlit?.Invoke();
   }
 
@@ -58,6 +81,14 @@ public class Torch : MonoBehaviour
       if (!m_isLit)
       {
         Lit();
+      }
+    }
+
+    if (collision.CompareTag("Ice"))
+    {
+      if (m_isLit)
+      {
+        Unlit();
       }
     }
   }
