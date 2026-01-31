@@ -100,6 +100,19 @@ public class Player : MonoBehaviour
     }
   }
 
+  public Mask CurrMask
+  {
+    get
+    {
+      int count = m_masks.Count;
+      if (m_currMask >= 0 && m_currMask < count)
+      {
+        return m_masks[m_currMask];
+      }
+      return null;
+    }
+  }
+
   public bool IsInvisible
   {
     get { return m_isInvisible; }
@@ -208,10 +221,16 @@ public class Player : MonoBehaviour
 
   private void OnInventoryInput(InputAction.CallbackContext context)
   {
-        if (!context.performed) return;
+    if (!context.performed) return;
+    
+    int slot = (int)context.ReadValue<float>() - 1;
+    int count = m_masks.Count;
+    if (slot >= 0 && slot < count)
+    {
+      m_currMask = slot;
+      GameManager.Instance.UI.UpdateMaskPower(m_masks[m_currMask]);
+    }
 
-        int slot = Mathf.RoundToInt(context.ReadValue<float>()) - 1;
-        m_currMask = slot;
   }
 
   void OnInventoryInputMouse(InputAction.CallbackContext context)
@@ -220,8 +239,8 @@ public class Player : MonoBehaviour
 
       if (Mathf.Abs(scroll) < 0.1f) return;
 
-      m_currMask += scroll > 0 ? -1 : 1;
-      m_currMask = (m_currMask + 5) % 5;
+    m_currMask += scroll > 0 ? -1 : 1;
+    m_currMask = (m_currMask + 5) % 5;
   }
 
     // Update is called once per frame
@@ -239,6 +258,7 @@ public class Player : MonoBehaviour
       if (mask && !m_masks.Contains(mask))
       {
         m_masks.Add(mask);
+        GameManager.Instance.UI.AddMaskToInventory(mask);
         mask.transform.parent = transform;
         mask.transform.localPosition = Vector3.zero;
         mask.GetComponentInChildren<SpriteRenderer>().enabled = false;
@@ -270,7 +290,7 @@ public class Player : MonoBehaviour
 
   private void OnTriggerStay2D(Collider2D collision)
   {
-    if (collision.CompareTag("Water") || collision.CompareTag("Abyss"))
+    if (collision.CompareTag("Abyss"))
     {
       WaterIceAbyss waterIce = collision.GetComponent<WaterIceAbyss>();
       if (waterIce && !waterIce.IsFrozen)

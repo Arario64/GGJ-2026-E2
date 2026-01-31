@@ -9,7 +9,7 @@ public class DestructibleWall : MonoBehaviour
   void Start()
   {
     m_wallCollider = GetComponent<BoxCollider2D>();
-    m_spriteRen = GetComponent<SpriteRenderer>();
+    m_spriteRen = GetComponentInChildren<SpriteRenderer>();
   }
 
   // Update is called once per frame

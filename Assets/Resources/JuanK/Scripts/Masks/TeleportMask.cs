@@ -2,7 +2,16 @@ using UnityEngine;
 
 public class TeleportMask : Mask
 {
-  
+  protected override void Start()
+  {
+    m_type = MaskTypes.TELEPORT;
+    base.Start();
+  }
+
+  protected override void Update()
+  {
+    base.Update();
+  }
 
   public override bool Activate()
   {

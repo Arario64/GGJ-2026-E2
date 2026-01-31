@@ -2,10 +2,17 @@ using UnityEngine;
 
 public class TruthSeerMask : Mask
 {
-  bool m_active = false;
 
-  private void Update()
+  protected override void Start()
   {
+    m_type = MaskTypes.TRUTH;
+    base.Start();
+  }
+
+  protected override void Update()
+  {
+    base.Update();
+
     if (m_active)
     {
       if (!Activate())

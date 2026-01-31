@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8946360484932298786}
-  - component: {fileID: 8230004560563762253}
   - component: {fileID: 2177083598113948157}
+  - component: {fileID: 8230004560563762253}
   m_Layer: 0
   m_Name: InvisibilityMask
   m_TagString: Mask
@@ -34,22 +34,6 @@ Transform:
   - {fileID: 6305093090017506662}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8230004560563762253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3358778130950318238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cc66453e31c99a438461b72c53e9728, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InvisibilityMask
-  m_maxPower: 100
-  m_useCost: 0.1
-  m_isFreeToUse: 1
-  m_opacity: 0.2
 --- !u!61 &2177083598113948157
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -96,6 +80,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.88526493}
   m_EdgeRadius: 0
+--- !u!114 &8230004560563762253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3358778130950318238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc66453e31c99a438461b72c53e9728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InvisibilityMask
+  m_maxPower: 100
+  m_useCost: 0.1
+  m_rechargeRate: 5
+  m_isFreeToUse: 1
+  m_color: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
+  m_playerOpacity: 0.5
 --- !u!1 &9203536374600500198
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +180,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
