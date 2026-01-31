@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
   private bool m_isSeeingTruth = false;
   private bool m_canTeleport = false;
 
+  private int m_keysCollected = 0;
+
   private Vector2 m_lastCheckpoint;
   Warp m_touchingWarp;
 
@@ -113,6 +115,11 @@ public class Player : MonoBehaviour
     }
   }
 
+  public int KeysCollected
+  {
+    get { return m_keysCollected; }
+  }
+
   public bool IsInvisible
   {
     get { return m_isInvisible; }
@@ -177,6 +184,8 @@ public class Player : MonoBehaviour
     InputActions.Playing.InventoryMousewheel.performed += OnInventoryInputMouse;
 
     LastCheckpoint = transform.position;
+
+    GameManager.Instance.UI.UpdateKeysText(m_keysCollected);
   }
 
 
@@ -305,7 +314,7 @@ public class Player : MonoBehaviour
       {
         m_masks.Add(mask);
         m_currMask = m_masks.Count - 1;
-        GameManager.Instance.UI.AddMaskToInventory(mask);
+        GameManager.Instance.UI.AddMaskToInventory(mask, m_currMask == 0);
         mask.transform.parent = transform;
         mask.transform.localPosition = Vector3.zero;
         mask.SpriteRen.enabled = false;
@@ -325,6 +334,13 @@ public class Player : MonoBehaviour
     if (collision.CompareTag("Checkpoint"))
     {
       LastCheckpoint = collision.transform.position;
+    }
+
+    if (collision.CompareTag("Key"))
+    {
+      Destroy(collision.gameObject);
+      m_keysCollected++;
+      GameManager.Instance.UI.UpdateKeysText(m_keysCollected);
     }
 
     if (collision.CompareTag("Hazard") || collision.CompareTag("Explotion"))

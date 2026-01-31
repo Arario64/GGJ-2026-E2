@@ -12,6 +12,7 @@ TagManager:
   - Checkpoint
   - Explotion
   - Ice
+  - Key
   layers:
   - Default
   - TransparentFX

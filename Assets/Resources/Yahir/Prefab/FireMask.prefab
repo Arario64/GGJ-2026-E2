@@ -141,7 +141,7 @@ MonoBehaviour:
   m_useCost: 10
   m_rechargeRate: 50
   m_isFreeToUse: 0
-  m_color: {r: 1, g: 0, b: 0, a: 1}
+  m_color: {r: 1, g: 0, b: 0, a: 0.6}
   m_flamethrower: {fileID: 5800358875151294223, guid: cfd5c87293b595d4898c4002c02837a4, type: 3}
 --- !u!61 &1290115491366582517
 BoxCollider2D:
