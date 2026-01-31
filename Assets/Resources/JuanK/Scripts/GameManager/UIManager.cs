@@ -13,8 +13,16 @@ public class UIManager : MonoBehaviour
   private GameObject m_gameOverPanel;
   private GameObject m_winPanel;
 
+  private TextMeshProUGUI m_keysText;
   private TextMeshProUGUI m_gameOverText;
-  private TextMeshProUGUI m_ammoText;
+
+  private GameObject m_currMaskSliderGO;
+  private GameObject m_fireMaskSliderGO;
+  private GameObject m_iceMaskSliderGO;
+  private GameObject m_invisibilityMaskSliderGO;
+  private GameObject m_truthMaskSliderGO;
+  private GameObject m_teleportMaskSliderGO;
+
   private Slider m_currMaskSlider;
   private Slider m_fireMaskSlider;
   private Slider m_iceMaskSlider;
@@ -28,6 +36,13 @@ public class UIManager : MonoBehaviour
   private Image m_invisibilityMaskFill;
   private Image m_truthMaskFill;
   private Image m_teleportMaskFill;
+
+  private Image m_currMaskIcon;
+  private Image m_fireMaskIcon;
+  private Image m_iceMaskIcon;
+  private Image m_invisibilityMaskIcon;
+  private Image m_truthMaskIcon;
+  private Image m_teleportMaskIcon;
 
   public GameObject Canvas
   {
@@ -113,6 +128,19 @@ public class UIManager : MonoBehaviour
     }
   }
 
+  public TextMeshProUGUI KeysText
+  {
+    get
+    {
+      if (m_keysText == null)
+      {
+        m_keysText = HUDPanel.transform.Find("Keys").gameObject.GetComponentInChildren<TextMeshProUGUI>();
+      }
+      return m_keysText;
+    }
+    set { m_keysText = value; }
+  }
+
   public TextMeshProUGUI GameOverText
   {
     get
@@ -138,13 +166,110 @@ public class UIManager : MonoBehaviour
     }
   }
 
+  private GameObject CurrMaskSliderGO
+  {
+    get
+    {
+      if (m_currMaskSliderGO == null)
+      {
+        m_currMaskSliderGO = HUDPanel.transform.Find("CurrMaskPower").gameObject;
+      }
+      return m_currMaskSliderGO;
+    }
+    set
+    {
+      m_currMaskSliderGO = value;
+    }
+  }
+
+  private GameObject FireMaskSliderGO
+  {
+    get
+    {
+      if (m_fireMaskSliderGO == null)
+      {
+        m_fireMaskSliderGO = HUDPanel.transform.Find("FireMaskPower").gameObject;
+      }
+      return m_fireMaskSliderGO;
+    }
+    set
+    {
+      m_fireMaskSliderGO = value;
+    }
+  }
+
+  private GameObject IceMaskSliderGO
+  {
+    get
+    {
+      if (m_iceMaskSliderGO == null)
+      {
+        m_iceMaskSliderGO = HUDPanel.transform.Find("IceMaskPower").gameObject;
+      }
+      return m_iceMaskSliderGO;
+    }
+    set
+    {
+      m_iceMaskSliderGO = value;
+    }
+  }
+
+  private GameObject InvisibilityMaskSliderGO
+  {
+    get
+    {
+      if (m_invisibilityMaskSliderGO == null)
+      {
+        m_invisibilityMaskSliderGO = HUDPanel.transform.Find("InvisibilityMaskPower").gameObject;
+      }
+      return m_invisibilityMaskSliderGO;
+    }
+    set
+    {
+      m_invisibilityMaskSliderGO = value;
+    }
+  }
+
+  private GameObject TruthMaskSliderGO
+  {
+    get
+    {
+      if (m_truthMaskSliderGO == null)
+      {
+        m_truthMaskSliderGO = HUDPanel.transform.Find("TruthMaskPower").gameObject;
+      }
+      return m_truthMaskSliderGO;
+    }
+    set
+    {
+      m_truthMaskSliderGO = value;
+    }
+  }
+
+  private GameObject TeleportMaskSliderGO
+  {
+    get
+    {
+      if (m_teleportMaskSliderGO == null)
+      {
+        m_teleportMaskSliderGO = HUDPanel.transform.Find("TeleportMaskPower").gameObject;
+      }
+      return m_teleportMaskSliderGO;
+    }
+    set
+    {
+      m_teleportMaskSliderGO = value;
+    }
+  }
+
   public Slider CurrMaskSlider
   {
     get
     {
       if (m_currMaskSlider == null)
       {
-        m_currMaskSlider = HUDPanel.transform.Find("CurrMaskPower").gameObject.GetComponent<Slider>();
+        m_currMaskSlider = CurrMaskSliderGO.GetComponent<Slider>();
+        CurrMaskSliderGO.SetActive(false);
       }
       return m_currMaskSlider;
     }
@@ -158,6 +283,7 @@ public class UIManager : MonoBehaviour
       if (m_fireMaskSlider == null)
       {
         m_fireMaskSlider = HUDPanel.transform.Find("FireMaskPower").gameObject.GetComponent<Slider>();
+        FireMaskSliderGO.SetActive(false);
       }
       return m_fireMaskSlider;
     }
@@ -171,6 +297,7 @@ public class UIManager : MonoBehaviour
       if (m_iceMaskSlider == null)
       {
         m_iceMaskSlider = HUDPanel.transform.Find("IceMaskPower").gameObject.GetComponent<Slider>();
+        IceMaskSliderGO.SetActive(false);
       }
       return m_iceMaskSlider;
     }
@@ -184,6 +311,7 @@ public class UIManager : MonoBehaviour
       if (m_invisibilityMaskSlider == null)
       {
         m_invisibilityMaskSlider = HUDPanel.transform.Find("InvisibilityMaskPower").gameObject.GetComponent<Slider>();
+        InvisibilityMaskSliderGO.SetActive(false);
       }
       return m_invisibilityMaskSlider;
     }
@@ -197,6 +325,7 @@ public class UIManager : MonoBehaviour
       if (m_truthMaskSlider == null)
       {
         m_truthMaskSlider = HUDPanel.transform.Find("TruthMaskPower").gameObject.GetComponent<Slider>();
+        TruthMaskSliderGO.SetActive(false);
       }
       return m_truthMaskSlider;
     }
@@ -210,6 +339,7 @@ public class UIManager : MonoBehaviour
       if (m_teleportMaskSlider == null)
       {
         m_teleportMaskSlider = HUDPanel.transform.Find("TeleportMaskPower").gameObject.GetComponent<Slider>();
+        TeleportMaskSliderGO.SetActive(false);
       }
       return m_teleportMaskSlider;
     }
@@ -222,7 +352,7 @@ public class UIManager : MonoBehaviour
     {
       if (m_currMaskFill == null)
       {
-        m_currMaskFill = CurrMaskSlider.fillRect.GetComponentInChildren<Image>();
+        m_currMaskFill = CurrMaskSlider.fillRect.GetComponentInChildren<Image>(true);
       }
       return m_currMaskFill;
     }
@@ -235,7 +365,7 @@ public class UIManager : MonoBehaviour
     {
       if (m_fireMaskFill == null)
       {
-        m_fireMaskFill = FireMaskSlider.fillRect.GetComponentInChildren<Image>();
+        m_fireMaskFill = FireMaskSlider.fillRect.GetComponentInChildren<Image>(true);
       }
       return m_fireMaskFill;
     }
@@ -248,7 +378,7 @@ public class UIManager : MonoBehaviour
     {
       if (m_iceMaskFill == null)
       {
-        m_iceMaskFill = IceMaskSlider.fillRect.GetComponentInChildren<Image>();
+        m_iceMaskFill = IceMaskSlider.fillRect.GetComponentInChildren<Image>(true);
       }
       return m_iceMaskFill;
     }
@@ -261,7 +391,7 @@ public class UIManager : MonoBehaviour
     {
       if (m_invisibilityMaskFill == null)
       {
-        m_invisibilityMaskFill = InvisibilityMaskSlider.fillRect.GetComponentInChildren<Image>();
+        m_invisibilityMaskFill = InvisibilityMaskSlider.fillRect.GetComponentInChildren<Image>(true);
       }
       return m_invisibilityMaskFill;
     }
@@ -274,7 +404,7 @@ public class UIManager : MonoBehaviour
     {
       if (m_truthMaskFill == null)
       {
-        m_truthMaskFill = TruthMaskSlider.fillRect.GetComponentInChildren<Image>();
+        m_truthMaskFill = TruthMaskSlider.fillRect.GetComponentInChildren<Image>(true);
       }
       return m_truthMaskFill;
     }
@@ -287,71 +417,127 @@ public class UIManager : MonoBehaviour
     {
       if (m_teleportMaskFill == null)
       {
-        m_teleportMaskFill = TeleportMaskSlider.fillRect.GetComponentInChildren<Image>();
+        m_teleportMaskFill = TeleportMaskSlider.fillRect.GetComponentInChildren<Image>(true);
       }
       return m_teleportMaskFill;
     }
     set { m_teleportMaskFill = value; }
   }
 
-  public TextMeshProUGUI AmmoText
+  public Image CurrMaskIcon
   {
     get
     {
-      if (m_ammoText == null)
+      if (m_currMaskIcon == null)
       {
-        m_ammoText = HUDPanel.transform.Find("AmmoText").gameObject.GetComponent<TextMeshProUGUI>();
+        m_currMaskIcon = CurrMaskSlider.transform.Find("CurrMaskIcon").gameObject.GetComponent<Image>();
+        m_currMaskIcon.color = Color.clear;
       }
-      return m_ammoText;
+      return m_currMaskIcon;
     }
-    set { m_ammoText = value; }
+    set { m_currMaskIcon = value; }
+  }
+
+  public Image FireMaskIcon
+  {
+    get
+    {
+      if (m_fireMaskIcon == null)
+      {
+        m_fireMaskIcon = FireMaskSlider.transform.Find("FireMaskIcon").gameObject.GetComponent<Image>();
+        m_fireMaskIcon.color = Color.clear;
+      }
+      return m_fireMaskIcon;
+    }
+    set { m_fireMaskIcon = value; }
+  }
+
+  public Image IceMaskIcon
+  {
+    get
+    {
+      if (m_iceMaskIcon == null)
+      {
+        m_iceMaskIcon = IceMaskSlider.transform.Find("IceMaskIcon").gameObject.GetComponent<Image>();
+        m_iceMaskIcon.color = Color.clear;
+      }
+      return m_iceMaskIcon;
+    }
+    set { m_iceMaskIcon = value; }
+  }
+
+  public Image InvisibilityMaskIcon
+  {
+    get
+    {
+      if (m_invisibilityMaskIcon == null)
+      {
+        m_invisibilityMaskIcon = InvisibilityMaskSlider.transform.Find("InvisibilityMaskIcon").gameObject.GetComponent<Image>();
+        m_invisibilityMaskIcon.color = Color.clear;
+      }
+      return m_invisibilityMaskIcon;
+    }
+    set { m_invisibilityMaskIcon = value; }
+  }
+
+  public Image TruthMaskIcon
+  {
+    get
+    {
+      if (m_truthMaskIcon == null)
+      {
+        m_truthMaskIcon = TruthMaskSlider.transform.Find("TruthMaskIcon").gameObject.GetComponent<Image>();
+        m_truthMaskIcon.color = Color.clear;
+      }
+      return m_truthMaskIcon;
+    }
+    set { m_truthMaskIcon = value; }
+  }
+
+  public Image TeleportMaskIcon
+  {
+    get
+    {
+      if (m_teleportMaskIcon == null)
+      {
+        m_teleportMaskIcon = TeleportMaskSlider.transform.Find("TeleportMaskIcon").gameObject.GetComponent<Image>();
+        m_teleportMaskIcon.color = Color.clear;
+      }
+      return m_teleportMaskIcon;
+    }
+    set { m_teleportMaskIcon = value; }
   }
 
   private void Start()
   {
-    Mask fireMask = FindAnyObjectByType<FireMask>();
-    //Mask iceMask = FindAnyObjectByType<IceMask>();
-    Mask invisibilityMask = FindAnyObjectByType<InvisibilityMask>();
-    Mask truthMask = FindAnyObjectByType<TruthSeerMask>();
-    Mask teleportMask = FindAnyObjectByType<TeleportMask>();
-
-    fireMask.OnPowerChange += UpdateMaskPower;
-    //iceMask.OnPowerChange += UpdateMaskPower;
-    invisibilityMask.OnPowerChange += UpdateMaskPower;
-    truthMask.OnPowerChange += UpdateMaskPower;
-    teleportMask.OnPowerChange += UpdateMaskPower;
-
-    CurrMaskFill.color = Color.clear; //Initial color
-    FireMaskFill.color = /*fireMask.MaskColor*/ Color.red;
-    IceMaskFill.color = /*iceMask.MaskColor*/new (0.0f, 0.8287549f, 1.0f, 1.0f);
-    InvisibilityMaskFill.color = invisibilityMask.MaskColor;
-    TruthMaskFill.color = truthMask.MaskColor;
-    TeleportMaskFill.color = teleportMask.MaskColor;
-
-    //TODO: Uncomment after UI is complete
-
-    //CustomAssert.IsNotNull(Canvas);
-    //CustomAssert.IsNotNull(MainMenuPanel);
-    //CustomAssert.IsNotNull(InstructionsPanel);
-    //CustomAssert.IsNotNull(AudioPanel);
-    //CustomAssert.IsNotNull(HUDPanel);
-    //CustomAssert.IsNotNull(PausePanel);
+    CustomAssert.IsNotNull(Canvas);
+    CustomAssert.IsNotNull(MainMenuPanel);
+    CustomAssert.IsNotNull(InstructionsPanel);
+    CustomAssert.IsNotNull(AudioPanel);
+    CustomAssert.IsNotNull(HUDPanel);
+    CustomAssert.IsNotNull(PausePanel);
     //CustomAssert.IsNotNull(GameOverPanel);
-    //CustomAssert.IsNotNull(GameOverText);
-    //CustomAssert.IsNotNull(WinPanel);
+    CustomAssert.IsNotNull(KeysText);
+    CustomAssert.IsNotNull(GameOverText);
+    CustomAssert.IsNotNull(WinPanel);
+
+    CustomAssert.IsNotNull(CurrMaskIcon);
+    CustomAssert.IsNotNull(FireMaskIcon);
+    CustomAssert.IsNotNull(IceMaskIcon);
+    CustomAssert.IsNotNull(InvisibilityMaskIcon);
+    CustomAssert.IsNotNull(TruthMaskIcon);
+    CustomAssert.IsNotNull(TeleportMaskIcon);
   }
 
   public void ShowPanel(GameObject panel, bool showHUD = false)
   {
-    //TODO: Uncomment after UI is complete
-
-    //MainMenuPanel.SetActive(MainMenuPanel == panel);
-    //InstructionsPanel.SetActive(InstructionsPanel == panel);
-    //AudioPanel.SetActive(AudioPanel == panel);
+    MainMenuPanel.SetActive(MainMenuPanel == panel);
+    InstructionsPanel.SetActive(InstructionsPanel == panel);
+    AudioPanel.SetActive(AudioPanel == panel);
     HUDPanel.SetActive(HUDPanel == panel || showHUD);
-    //PausePanel.SetActive(PausePanel == panel);
-    //GameOverPanel.SetActive(GameOverPanel == panel);
-    //WinPanel.SetActive(WinPanel == panel);
+    PausePanel.SetActive(PausePanel == panel);
+    GameOverPanel.SetActive(GameOverPanel == panel);
+    WinPanel.SetActive(WinPanel == panel);
   }
 
   public void InfoUpdate()
@@ -359,9 +545,63 @@ public class UIManager : MonoBehaviour
 
   }
 
-  public void AddMaskToInventory(Mask mask)
+  public void UpdateKeysText(int gotKeys)
   {
-    //TODO: Add mask icon to inventory UI
+    KeysText.text = gotKeys + " / " + GameManager.Instance.WinZone.KeysNeeded;
+  }
+
+  public void AddMaskToInventory(Mask mask, bool isFirstMask = false)
+  {
+    mask.OnPowerChange += UpdateMaskPower;
+
+    if (isFirstMask)
+    {
+      CurrMaskSliderGO.SetActive(true);
+    }
+
+    switch (mask.Type)
+    {
+      case MaskTypes.FIRE:
+      {
+        FireMaskSliderGO.SetActive(true);
+        FireMaskFill.color = mask.MaskColor;
+        FireMaskIcon.sprite = mask.SpriteRen.sprite;
+        FireMaskIcon.color = Color.white;
+        break;
+      }
+      case MaskTypes.ICE:
+      {
+        IceMaskSliderGO.SetActive(true);
+        IceMaskFill.color = mask.MaskColor;
+        IceMaskIcon.sprite = mask.SpriteRen.sprite;
+        IceMaskIcon.color = Color.white;
+        break;
+      }
+      case MaskTypes.INVISIBILITY:
+      {
+        InvisibilityMaskSliderGO.SetActive(true);
+        InvisibilityMaskFill.color = mask.MaskColor;
+        InvisibilityMaskIcon.sprite = mask.SpriteRen.sprite;
+        InvisibilityMaskIcon.color = Color.white;
+        break;
+      }
+      case MaskTypes.TRUTH:
+      {
+        TruthMaskSliderGO.SetActive(true);
+        TruthMaskFill.color = mask.MaskColor;
+        TruthMaskIcon.sprite = mask.SpriteRen.sprite;
+        TruthMaskIcon.color = Color.white;
+        break;
+      }
+      case MaskTypes.TELEPORT:
+      {
+        TeleportMaskSliderGO.SetActive(true);
+        TeleportMaskFill.color = mask.MaskColor;
+        TeleportMaskIcon.sprite = mask.SpriteRen.sprite;
+        TeleportMaskIcon.color = Color.white;
+        break;
+      }
+    }
 
     UpdateMaskPower(mask);
   }
@@ -369,6 +609,7 @@ public class UIManager : MonoBehaviour
   public void UpdateMaskPower(Mask mask)
   {
     Mask currMask = GameManager.Instance.Player.CurrMask;
+    Sprite maskIcon = mask.SpriteRen.sprite;
 
     float normalizedPower = mask.CurrPower / mask.MaxPower;
 
@@ -378,7 +619,7 @@ public class UIManager : MonoBehaviour
       {
         if (currMask == mask)
         {
-            UpdateCurrMaskPower(normalizedPower, mask.MaskColor);
+          UpdateCurrMaskPower(normalizedPower, mask.MaskColor, maskIcon);
         }
         FireMaskSlider.value = normalizedPower;
         break;
@@ -387,7 +628,7 @@ public class UIManager : MonoBehaviour
       {
         if (currMask == mask)
         {
-          UpdateCurrMaskPower(normalizedPower, mask.MaskColor);
+          UpdateCurrMaskPower(normalizedPower, mask.MaskColor, maskIcon);
         }
         IceMaskSlider.value = normalizedPower;
         break;
@@ -396,7 +637,7 @@ public class UIManager : MonoBehaviour
       {
         if (currMask == mask)
         {
-          UpdateCurrMaskPower(normalizedPower, mask.MaskColor);
+          UpdateCurrMaskPower(normalizedPower, mask.MaskColor, maskIcon);
         }
         InvisibilityMaskSlider.value = normalizedPower;
         break;
@@ -405,7 +646,7 @@ public class UIManager : MonoBehaviour
       {
         if (currMask == mask)
         {
-          UpdateCurrMaskPower(normalizedPower, mask.MaskColor);
+          UpdateCurrMaskPower(normalizedPower, mask.MaskColor, maskIcon);
         }
         TruthMaskSlider.value = normalizedPower;
         break;
@@ -414,7 +655,7 @@ public class UIManager : MonoBehaviour
       {
         if (currMask == mask)
         {
-          UpdateCurrMaskPower(normalizedPower, mask.MaskColor);
+          UpdateCurrMaskPower(normalizedPower, mask.MaskColor, maskIcon);
         }
         TeleportMaskSlider.value = normalizedPower;
         break;
@@ -422,13 +663,15 @@ public class UIManager : MonoBehaviour
     }
   }
 
-  public void UpdateCurrMaskPower(float normalizedPower, Color sliderColor)
+  public void UpdateCurrMaskPower(float normalizedPower, Color sliderColor, Sprite maskIcon)
   {
     CurrMaskSlider.value = normalizedPower;
-    CurrMaskSlider.image.color = sliderColor;
-    
-    CurrMaskFill.color = sliderColor;
+    Color opaqueSliderColor = sliderColor;
+    opaqueSliderColor.a = 1.0f;
+    CurrMaskFill.color = opaqueSliderColor;
 
+    CurrMaskIcon.sprite = maskIcon;
+    CurrMaskIcon.color = Color.white;
   }
 
   public void OnMainMenuClicked()
@@ -458,7 +701,7 @@ public class UIManager : MonoBehaviour
     else if (GameManager.Instance.Paused)
     {
       ShowPanel(PausePanel);
-    }    
+    }
   }
 
   public void OnAudioClicked()
