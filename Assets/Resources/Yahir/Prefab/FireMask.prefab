@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7131027653221224633}
   m_Layer: 0
   m_Name: Flamethrower
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,8 +106,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2969127000226163930}
   - component: {fileID: 753244259457017186}
-  - component: {fileID: 5196421836009977157}
   - component: {fileID: 7842565090371696936}
+  - component: {fileID: 1290115491366582517}
   m_Layer: 0
   m_Name: FireMask
   m_TagString: Mask
@@ -190,8 +190,24 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!60 &5196421836009977157
-PolygonCollider2D:
+--- !u!114 &7842565090371696936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8069625635569518235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9e29a5ce074cd42a07ab0448b868ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireMask
+  m_maxPower: 100
+  m_useCost: 2
+  m_isFreeToUse: 0
+  m_flamethrower: {fileID: 4680558332367627591}
+--- !u!61 &1290115491366582517
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -224,7 +240,7 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.21133333}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.28866667}
@@ -234,25 +250,5 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 0.5773587}
-      - {x: -0.5, y: -0.28866667}
-      - {x: 0.5, y: -0.28866667}
-  m_UseDelaunayMesh: 1
---- !u!114 &7842565090371696936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8069625635569518235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f9e29a5ce074cd42a07ab0448b868ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FireMask
-  m_maxPower: 100
-  m_useCost: 2
-  m_isFreeToUse: 0
-  m_flamethrower: {fileID: 4680558332367627591}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
