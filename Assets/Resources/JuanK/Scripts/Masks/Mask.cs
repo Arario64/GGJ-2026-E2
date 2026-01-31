@@ -24,6 +24,9 @@ public class Mask : MonoBehaviour
   [SerializeField] private Color m_color = Color.red;
   protected MaskTypes m_type;
 
+  private SpriteRenderer m_spriteRen;
+  private BoxCollider2D m_collider;
+
   protected float m_currPower;
   protected bool m_active = false;
 
@@ -47,8 +50,35 @@ public class Mask : MonoBehaviour
     get { return m_color; }
   }
 
+  public SpriteRenderer SpriteRen
+  {
+    get
+    {
+      if (m_spriteRen == null)
+      {
+        m_spriteRen = GetComponent<SpriteRenderer>();
+      }
+      return m_spriteRen;
+    }
+  }
+
+  public BoxCollider2D Collider
+  {
+    get
+    {
+      if (m_collider == null)
+      {
+        m_collider = GetComponent<BoxCollider2D>();
+      }
+      return m_collider;
+    }
+  }
+
   protected virtual void Start()
   {
+    CustomAssert.IsNotNull(SpriteRen);
+    CustomAssert.IsNotNull(Collider);
+
     m_currPower = m_maxPower;
     OnPowerChange?.Invoke(this);
   }

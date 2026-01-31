@@ -221,10 +221,16 @@ public class Player : MonoBehaviour
 
   private void OnInventoryInput(InputAction.CallbackContext context)
   {
-        if (!context.performed) return;
+    if (!context.performed) return;
+    
+    int slot = (int)context.ReadValue<float>() - 1;
+    int count = m_masks.Count;
+    if (slot >= 0 && slot < count)
+    {
+      m_currMask = slot;
+      GameManager.Instance.UI.UpdateMaskPower(m_masks[m_currMask]);
+    }
 
-        int slot = Mathf.RoundToInt(context.ReadValue<float>()) - 1;
-        m_currMask = slot;
   }
 
   void OnInventoryInputMouse(InputAction.CallbackContext context)
