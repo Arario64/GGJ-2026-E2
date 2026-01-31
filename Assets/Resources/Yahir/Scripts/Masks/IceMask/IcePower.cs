@@ -19,6 +19,9 @@ public class IcePower : MonoBehaviour
 
     private bool _active = false;
 
+    [SerializeField]
+    private GameObject _spriteRender;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,6 +39,8 @@ public class IcePower : MonoBehaviour
                 m_currentLength += 1.0f;
                 m_fireCollider.size = new Vector2(m_currentLength, m_fireCollider.size.y);
                 m_fireCollider.offset = new Vector2(m_currentLength / 2f, 0f);
+                float visualScale = m_currentLength;
+                _spriteRender.transform.localScale = new Vector3(visualScale, 1f, 1f);
                 _growthTime = 0.0f;
             }
             else if (_growthTime > 0.5f && m_currentLength >= m_maxLength)
@@ -53,7 +58,8 @@ public class IcePower : MonoBehaviour
 
                 m_fireCollider.offset = new Vector2(m_maxLength - (m_currentLength / 2f),
                                                     0f);
-
+                float visualScale = m_currentLength;
+                _spriteRender.transform.localScale = new Vector3(visualScale, 1f, 1f);
                 if (m_currentLength <= 0.01f)
                 {
                     gameObject.SetActive(false);
@@ -75,6 +81,13 @@ public class IcePower : MonoBehaviour
         _active = true;
     }
 
+    private void OnDrawGizmos()
+    {
+        if (!m_fireCollider) return;
+
+        Gizmos.color = UnityEngine.Color.black;
+        Gizmos.DrawWireCube(m_fireCollider.bounds.center, m_fireCollider.bounds.size);
+    }
     public void deactivateFlamethrower()
     {
         //_active = false;
