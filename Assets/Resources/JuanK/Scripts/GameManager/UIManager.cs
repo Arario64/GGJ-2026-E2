@@ -323,7 +323,7 @@ public class UIManager : MonoBehaviour
 
     CurrMaskFill.color = Color.clear; //Initial color
     FireMaskFill.color = /*fireMask.MaskColor*/ Color.red;
-    IceMaskFill.color = /*iceMask.MaskColor*/Color.blue;
+    IceMaskFill.color = /*iceMask.MaskColor*/new (0.0f, 0.8287549f, 1.0f, 1.0f);
     InvisibilityMaskFill.color = invisibilityMask.MaskColor;
     TruthMaskFill.color = truthMask.MaskColor;
     TeleportMaskFill.color = teleportMask.MaskColor;
