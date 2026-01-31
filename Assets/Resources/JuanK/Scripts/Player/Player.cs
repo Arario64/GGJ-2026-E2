@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
   [SerializeField] private float m_moveSpeed = 5.0f;
   private Vector2 m_movingDir;
+  private Vector2 m_lastMovingDir;
 
   private Rigidbody2D m_rb;
   private SpriteRenderer m_spriteRen;
@@ -72,6 +73,11 @@ public class Player : MonoBehaviour
   public Vector2 MovingDir
   {
     get { return m_movingDir; }
+  }
+
+  public Vector2 LastMovingDir
+  {
+    get { return m_lastMovingDir; }
   }
 
   public float MoveSpeed
@@ -200,6 +206,7 @@ public class Player : MonoBehaviour
   private void OnMoveInput(InputAction.CallbackContext context)
   {
     m_movingDir = context.ReadValue<Vector2>();
+    m_lastMovingDir = m_movingDir;
   }
 
   private void OnCancelMoveInput(InputAction.CallbackContext context)

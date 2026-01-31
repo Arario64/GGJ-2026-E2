@@ -20,7 +20,7 @@ public class Flammable : MonoBehaviour
     {
         if (collision.CompareTag("Fire"))
         {
-            _animator.SetBool("inFire", true);
+            //_animator.SetBool("inFire", true);
             //Quitar esto
             Destroy(gameObject);
         }
