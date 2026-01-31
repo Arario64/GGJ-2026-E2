@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.9598465, a: 1}
+  m_Color: {r: 1, g: 0.9137255, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,8 +100,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4984862904466743511}
-  - component: {fileID: 3814122963483231108}
   - component: {fileID: 2130953323363597714}
+  - component: {fileID: 3814122963483231108}
   m_Layer: 0
   m_Name: TruthSeerMask
   m_TagString: Mask
@@ -125,21 +125,6 @@ Transform:
   - {fileID: 3248356907079788984}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3814122963483231108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3568268495334984908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad4402054dc328047a7754019affb749, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TruthSeerMask
-  m_maxPower: 100
-  m_useCost: 0.1
-  m_isFreeToUse: 1
 --- !u!61 &2130953323363597714
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -170,7 +155,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -186,3 +171,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.88387036}
   m_EdgeRadius: 0
+--- !u!114 &3814122963483231108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3568268495334984908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4402054dc328047a7754019affb749, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TruthSeerMask
+  m_maxPower: 100
+  m_useCost: 0.1
+  m_rechargeRate: 5
+  m_isFreeToUse: 1
+  m_color: {r: 1, g: 0.91323906, b: 0, a: 1}
