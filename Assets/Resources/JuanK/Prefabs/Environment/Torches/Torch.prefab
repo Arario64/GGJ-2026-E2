@@ -156,5 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bf8b5de674aa494b8601b75dcb174d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Torch
+  m_starstLit: 0
   m_lifetime: 2
   m_foreverLit: 0
+  m_conditionIsLit: 0

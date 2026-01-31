@@ -186,5 +186,5 @@ MonoBehaviour:
   m_maxPower: 100
   m_useCost: 0.1
   m_rechargeRate: 5
-  m_isFreeToUse: 1
+  m_isFreeToUse: 0
   m_color: {r: 1, g: 0.91323906, b: 0, a: 1}

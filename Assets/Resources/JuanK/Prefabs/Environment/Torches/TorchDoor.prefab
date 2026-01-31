@@ -154,3 +154,6 @@ MonoBehaviour:
   m_linkedTorches:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

@@ -95,7 +95,7 @@ MonoBehaviour:
   m_maxPower: 100
   m_useCost: 10
   m_rechargeRate: 5
-  m_isFreeToUse: 1
+  m_isFreeToUse: 0
   m_color: {r: 0.8792453, g: 0, b: 0.7378765, a: 1}
 --- !u!1 &9156947421289402473
 GameObject:
