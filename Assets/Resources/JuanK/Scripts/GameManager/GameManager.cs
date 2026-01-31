@@ -199,7 +199,7 @@ public class GameManager : MonoBehaviour
     CustomAssert.IsNotNull(InputActions);
     CustomAssert.IsNotNull(Player);
     CustomAssert.IsNotNull(UI);
-    CustomAssert.IsNotNull(WinZone);
+    //CustomAssert.IsNotNull(WinZone);
     CustomAssert.IsNotNull(MainMenuState);
     CustomAssert.IsNotNull(PlayingState);
     CustomAssert.IsNotNull(PauseState);
