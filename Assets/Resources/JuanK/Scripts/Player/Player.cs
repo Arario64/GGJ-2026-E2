@@ -173,9 +173,10 @@ public class Player : MonoBehaviour
     InputActions.Playing.Move.canceled += OnCancelMoveInput;
     InputActions.Playing.ActivateMask.performed += OnActivateMask;
     InputActions.Playing.ActivateMask.canceled += OnDeactivateMask;
+    InputActions.Playing.InventoryKeyboard.performed += OnInventoryKeyboard;
+    InputActions.Playing.InventoryMousewheel.performed += OnInventoryInputMouse;
 
     LastCheckpoint = transform.position;
-    InputActions.Playing.Inventory.performed += OnInventoryInput;
   }
 
 
@@ -219,7 +220,7 @@ public class Player : MonoBehaviour
     }
   }
 
-  private void OnInventoryInput(InputAction.CallbackContext context)
+  private void OnInventoryKeyboard(InputAction.CallbackContext context)
   {
     if (!context.performed) return;
     
@@ -227,6 +228,20 @@ public class Player : MonoBehaviour
     int count = m_masks.Count;
     if (slot >= 0 && slot < count)
     {
+      if (slot != m_currMask)
+      {
+        // Deactivate current mask
+        Mask currMask = CurrMask;
+        if (currMask != null && currMask.IsActive)
+        {
+          currMask.Deactivate();
+          m_currMask = slot;
+          m_masks[m_currMask].Activate();
+          GameManager.Instance.UI.UpdateMaskPower(m_masks[m_currMask]);
+          return;
+        }
+      }
+
       m_currMask = slot;
       GameManager.Instance.UI.UpdateMaskPower(m_masks[m_currMask]);
     }
@@ -235,12 +250,43 @@ public class Player : MonoBehaviour
 
   void OnInventoryInputMouse(InputAction.CallbackContext context)
   {
-      float scroll = context.ReadValue<float>();
-
-      if (Mathf.Abs(scroll) < 0.1f) return;
-
-    m_currMask += scroll > 0 ? -1 : 1;
-    m_currMask = (m_currMask + 5) % 5;
+    if (!context.performed) return;
+    float scrollValue = context.ReadValue<float>();
+    int count = m_masks.Count;
+    if (count == 0 || count == 1) return;
+    Mask mask = CurrMask;
+    bool activateNext = false;
+    if (scrollValue > 0)
+    {
+      if (mask != null && mask.IsActive)
+      {
+        mask.Deactivate();
+        activateNext = true;
+      }
+      m_currMask--;
+      if (m_currMask < 0)
+      {
+        m_currMask = count - 1;
+      }
+    }
+    else if (scrollValue < 0)
+    {
+      if (mask != null && mask.IsActive)
+      {
+        mask.Deactivate();
+        activateNext = true;
+      }
+      m_currMask++;
+      if (m_currMask >= count)
+      {
+        m_currMask = 0;
+      }
+    }
+    GameManager.Instance.UI.UpdateMaskPower(m_masks[m_currMask]);
+    if (activateNext)
+    {
+      m_masks[m_currMask].Activate();
+    }
   }
 
     // Update is called once per frame
@@ -258,11 +304,12 @@ public class Player : MonoBehaviour
       if (mask && !m_masks.Contains(mask))
       {
         m_masks.Add(mask);
+        m_currMask = m_masks.Count - 1;
         GameManager.Instance.UI.AddMaskToInventory(mask);
         mask.transform.parent = transform;
         mask.transform.localPosition = Vector3.zero;
-        mask.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        mask.GetComponent<BoxCollider2D>().enabled = false;
+        mask.SpriteRen.enabled = false;
+        mask.Collider.enabled = false;
       }
     }
 

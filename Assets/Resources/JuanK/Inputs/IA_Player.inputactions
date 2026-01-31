@@ -43,9 +43,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Inventory",
+                    "name": "InventoryKeyboard",
                     "type": "Button",
                     "id": "6536a65c-30f6-488b-8971-ab09f3cbaab0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InventoryMousewheel",
+                    "type": "Button",
+                    "id": "aab273d2-916b-4beb-b267-0ff91e8df04b",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -235,8 +244,8 @@
                     "path": "<Keyboard>/1",
                     "interactions": "Press",
                     "processors": "Scale",
-                    "groups": "",
-                    "action": "Inventory",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "InventoryKeyboard",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -246,8 +255,8 @@
                     "path": "<Keyboard>/2",
                     "interactions": "Press",
                     "processors": "Scale(factor=2)",
-                    "groups": "",
-                    "action": "Inventory",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "InventoryKeyboard",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -257,8 +266,8 @@
                     "path": "<Keyboard>/3",
                     "interactions": "Press",
                     "processors": "Scale(factor=3)",
-                    "groups": "",
-                    "action": "Inventory",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "InventoryKeyboard",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -268,8 +277,8 @@
                     "path": "<Keyboard>/4",
                     "interactions": "Press",
                     "processors": "Scale(factor=4)",
-                    "groups": "",
-                    "action": "Inventory",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "InventoryKeyboard",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -279,10 +288,43 @@
                     "path": "<Keyboard>/5",
                     "interactions": "Press",
                     "processors": "Scale(factor=5)",
-                    "groups": "",
-                    "action": "Inventory",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "InventoryKeyboard",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "b75f2b42-a63d-4155-8f71-798054b0e558",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InventoryMousewheel",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Positive",
+                    "id": "5929ab1d-bbe4-4135-a641-df9f7f366571",
+                    "path": "<Mouse>/scroll/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InventoryMousewheel",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Negative",
+                    "id": "74c5b112-3792-4171-ad33-4bebb1fd3467",
+                    "path": "<Mouse>/scroll/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InventoryMousewheel",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

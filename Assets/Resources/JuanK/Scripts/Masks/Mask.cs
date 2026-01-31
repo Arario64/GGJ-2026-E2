@@ -50,15 +50,24 @@ public class Mask : MonoBehaviour
     get { return m_color; }
   }
 
+  public bool IsActive
+  {
+    get { return m_active; }
+  }
+
   public SpriteRenderer SpriteRen
   {
     get
     {
       if (m_spriteRen == null)
       {
-        m_spriteRen = GetComponent<SpriteRenderer>();
+        m_spriteRen = GetComponentInChildren<SpriteRenderer>();
       }
       return m_spriteRen;
+    }
+    set
+    {
+      m_spriteRen = value;
     }
   }
 
@@ -68,9 +77,13 @@ public class Mask : MonoBehaviour
     {
       if (m_collider == null)
       {
-        m_collider = GetComponent<BoxCollider2D>();
+        m_collider = GetComponentInChildren<BoxCollider2D>();
       }
       return m_collider;
+    }
+    set
+    {
+      m_collider = value;
     }
   }
 
