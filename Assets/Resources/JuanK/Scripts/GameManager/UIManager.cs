@@ -310,20 +310,20 @@ public class UIManager : MonoBehaviour
   private void Start()
   {
     Mask fireMask = FindAnyObjectByType<FireMask>();
-    //Mask iceMask = FindAnyObjectByType<IceMask>();
+    Mask iceMask = FindAnyObjectByType<IceMask>();
     Mask invisibilityMask = FindAnyObjectByType<InvisibilityMask>();
     Mask truthMask = FindAnyObjectByType<TruthSeerMask>();
     Mask teleportMask = FindAnyObjectByType<TeleportMask>();
 
     fireMask.OnPowerChange += UpdateMaskPower;
-    //iceMask.OnPowerChange += UpdateMaskPower;
+    iceMask.OnPowerChange += UpdateMaskPower;
     invisibilityMask.OnPowerChange += UpdateMaskPower;
     truthMask.OnPowerChange += UpdateMaskPower;
     teleportMask.OnPowerChange += UpdateMaskPower;
 
     CurrMaskFill.color = Color.clear; //Initial color
-    FireMaskFill.color = /*fireMask.MaskColor*/ Color.red;
-    IceMaskFill.color = /*iceMask.MaskColor*/new (0.0f, 0.8287549f, 1.0f, 1.0f);
+    FireMaskFill.color = fireMask.MaskColor;
+    IceMaskFill.color = iceMask.MaskColor;
     InvisibilityMaskFill.color = invisibilityMask.MaskColor;
     TruthMaskFill.color = truthMask.MaskColor;
     TeleportMaskFill.color = teleportMask.MaskColor;

@@ -16,19 +16,25 @@ public class IceMask : Mask
 
     }
 
-    void Start()
+    protected override void Start()
     {
-
+        m_type = MaskTypes.ICE;
+        base.Start();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        base.Update();
     }
 
     public override bool Activate()
     {
+        if (!base.Activate())
+        {
+            return false;
+        }
+
         _icePowerGO = Instantiate(m_icePower);
         _icePower = _icePowerGO.GetComponent<IcePower>();
         _icePowerGO.SetActive(true);
