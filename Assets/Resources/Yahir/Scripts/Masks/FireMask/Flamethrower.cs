@@ -5,6 +5,8 @@ public class Flamethrower : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D m_fireCollider;
 
+    private GameObject _fireMaskGameObject;
+
     public float m_currentLength = 0f;
     public float m_maxLength = 4f;
     public float m_growSpeed = 1.0f;
@@ -24,6 +26,7 @@ public class Flamethrower : MonoBehaviour
     {
         if (_active)
         {
+            transform.position = _fireMaskGameObject.transform.position;
             m_currentLength = Mathf.MoveTowards(m_currentLength,
                                                 m_maxLength,
                                                 m_growSpeed * Time.deltaTime);
@@ -45,6 +48,7 @@ public class Flamethrower : MonoBehaviour
             if (m_currentLength <= 0.01f)
             {
                 gameObject.SetActive(false);
+                Destroy(gameObject);
             }
         }
     }
@@ -59,5 +63,10 @@ public class Flamethrower : MonoBehaviour
     public void deactivateFlamethrower()
     {
         _active = false;
+    }
+
+    public void setGameObject(GameObject GO)
+    {
+        _fireMaskGameObject = GO;
     }
 }

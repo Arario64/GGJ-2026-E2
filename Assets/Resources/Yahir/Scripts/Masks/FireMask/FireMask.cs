@@ -4,59 +4,43 @@ using UnityEngine.InputSystem;
 
 public class FireMask : Mask
 {
-  [SerializeField]
-  GameObject m_flamethrower;
+    [SerializeField]
+    GameObject m_flamethrower;
 
-  Flamethrower _flamethrower;
+    GameObject _flamethrowerGO;
 
-  // Start is called once before the first execution of Update after the MonoBehaviour is created
-  void Awake()
-  {
-    _flamethrower = m_flamethrower.GetComponent<Flamethrower>();
-  }
+    Flamethrower _flamethrower;
 
-  protected override void Start()
-  {
-    base.Start();
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
 
-  }
+    }
 
-  // Update is called once per frame
-  void Update()
-  {
-    //var keyboard = Keyboard.current;
-    //if (keyboard == null) return;
+    void Start()
+    {
+        
+    }
 
-    //if (keyboard.wKey.wasPressedThisFrame)
-    //{
-    //    Activate();
-    //}
-    //else if (keyboard.aKey.wasPressedThisFrame)
-    //{
-    //    Activate();
-    //}
-    //else if (keyboard.sKey.wasPressedThisFrame)
-    //{
-    //    Activate();
-    //}
-    //else if (keyboard.dKey.wasPressedThisFrame)
-    //{
-    //    Activate();
-    //}
-    //else if (keyboard.lKey.wasPressedThisFrame)
-    //{
-    //    Deactivate();
-    //}
-  }
+    // Update is called once per frame
+    void Update()
+    {
 
-  public override bool Activate()
-  {
-    m_flamethrower.SetActive(true);
-    _flamethrower.activeFlamethrower(GameManager.Instance.Player.MovingDir);
-    return true;
-  }
-  public override void Deactivate()
-  {
-    _flamethrower.deactivateFlamethrower();
-  }
+    }
+
+    public override bool Activate()
+    {
+        //m_flamethrower.SetActive(true);
+
+        _flamethrowerGO = Instantiate(m_flamethrower);
+        _flamethrower = _flamethrowerGO.GetComponent<Flamethrower>();
+        _flamethrowerGO.SetActive(true);
+        _flamethrower.activeFlamethrower(GameManager.Instance.Player.MovingDir);
+        _flamethrower.setGameObject(gameObject);
+        return true;
+    }
+    public override void Deactivate()
+    {
+        _flamethrower.deactivateFlamethrower();
+    }
 }
