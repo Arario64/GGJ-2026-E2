@@ -5,10 +5,7 @@ using UnityEngine;
 public class TorchDoor : MonoBehaviour
 {
   [SerializeField] private List<Torch> m_linkedTorches;
-
-  [Tooltip("If true, the door opens when all torches are lit. If false, the door opens when all torches are unlit.")]
-  [SerializeField] private bool m_openWhenLit = true;
-  private float m_litCount = 0;
+  private float m_fulfilledCount = 0;
 
   private BoxCollider2D m_doorCollider;
   private SpriteRenderer m_spriteRen;
@@ -25,60 +22,90 @@ public class TorchDoor : MonoBehaviour
 
     foreach (var torch in m_linkedTorches)
     {
-      torch.OnLit += OnTorchLit;
-      torch.OnUnlit += OnTorchUnlit;
+      //torch.OnLit += OnTorchLit;
+      //torch.OnUnlit += OnTorchUnlit;
 
-      if (!m_openWhenLit)
+      //if (!m_openWhenLit)
+      //{
+      //  torch.IsForeverLit = true;
+      //  if (!torch.IsLit)
+      //  {
+      //    torch.Lit();
+      //  }
+      //}
+      //else
+      //{
+      //  if (torch.IsLit)
+      //  {
+      //    torch.Unlit();
+      //  }
+      //}
+
+      if (torch.ConditionFulfilled)
       {
-        torch.IsForeverLit = true;
-        if (!torch.IsLit)
+        ++m_fulfilledCount;
+        if (m_fulfilledCount == m_linkedTorches.Count)
         {
-          torch.Lit();
+          OpenDoor();
         }
       }
-      else
-      {
-        if (torch.IsLit)
-        {
-          torch.Unlit();
-        }
-      }
-
+      torch.OnStateChange += OnTorchChanged;
     }
   }
 
-  private void OnTorchLit()
+  private void OnTorchChanged(bool isFulfilled)
   {
-    ++m_litCount;
-    if (m_litCount == m_linkedTorches.Count && m_openWhenLit)
+    if (m_isOpen)
     {
-      OpenDoor();
+      return;
     }
-  }
 
-  private void OnTorchUnlit()
-  {
-    --m_litCount;
-    if (m_openWhenLit)
+    if (isFulfilled)
     {
-      if (m_isOpen)
-      {
-        return;
-      }
-
-      if (m_litCount < m_linkedTorches.Count)
-      {
-        CloseDoor();
-      }
-    }
-    else
-    {
-      if (m_litCount == 0)
+      ++m_fulfilledCount;
+      if (m_fulfilledCount == m_linkedTorches.Count)
       {
         OpenDoor();
       }
     }
+    else
+    {
+      --m_fulfilledCount;
+    }
   }
+
+  //private void OnTorchLit()
+  //{
+  //  ++m_fulfilledCount;
+  //  if (m_fulfilledCount == m_linkedTorches.Count && m_openWhenLit)
+  //  {
+  //    OpenDoor();
+  //  }
+  //}
+
+  //private void OnTorchUnlit()
+  //{
+  //  --m_fulfilledCount;
+  //  if (m_openWhenLit)
+  //  {
+  //    if (m_isOpen)
+  //    {
+  //      return;
+  //    }
+
+  //    if (m_fulfilledCount < m_linkedTorches.Count)
+  //    {
+  //      CloseDoor();
+  //    }
+  //  }
+  //  else
+  //  {
+  //    if (m_fulfilledCount == 0)
+  //    {
+  //      OpenDoor();
+  //    }
+  //  }
+  //}
 
   // Update is called once per frame
   void Update()
@@ -89,11 +116,13 @@ public class TorchDoor : MonoBehaviour
   private void OpenDoor()
   {
     m_isOpen = true;
-    if (m_openWhenLit)
+
+    foreach (Torch torch in m_linkedTorches)
     {
-      foreach (Torch torch in m_linkedTorches)
+      if (torch.ConditionIsLit)
       {
         torch.IsForeverLit = true;
+        torch.Lit();
       }
     }
 

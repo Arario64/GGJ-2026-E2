@@ -3,14 +3,19 @@ using UnityEngine;
 
 public class Torch : MonoBehaviour
 {
+  public event Action<bool> OnStateChange;
   public event Action OnLit;
   public event Action OnUnlit;
 
+  [SerializeField] private bool m_starstLit = false;
   [SerializeField] private float m_lifetime = 5.0f;
 
+  private float m_litTime = 0.0f;
   [Tooltip("Torch won't unlit for time passing")]
   [SerializeField] private bool m_foreverLit = false;
-  private float m_litTime = 0.0f;
+  [SerializeField] private bool m_conditionIsLit = true;
+  private bool m_conditionFulfilled = false;
+
   private bool m_isLit = false;
 
   SpriteRenderer m_spriteRen;
@@ -26,6 +31,16 @@ public class Torch : MonoBehaviour
     get { return m_isLit; }
   }
 
+  public bool ConditionIsLit
+  {
+    get { return m_conditionIsLit; }
+  }
+
+  public bool ConditionFulfilled
+  {
+    get { return m_conditionFulfilled; }
+  }
+
   public SpriteRenderer SpriteRen
   {
     get
@@ -38,10 +53,23 @@ public class Torch : MonoBehaviour
     }
   }
 
+  private void Awake()
+  {
+    m_spriteRen = GetComponent<SpriteRenderer>();
+    if (m_starstLit)
+    {
+      Lit();
+    }
+    else
+    {
+      Unlit();
+    }
+  }
+
   // Start is called once before the first execution of Update after the MonoBehaviour is created
   void Start()
   {
-    m_spriteRen = GetComponent<SpriteRenderer>();
+    
   }
 
   // Update is called once per frame
@@ -64,6 +92,10 @@ public class Torch : MonoBehaviour
   {
     m_isLit = true;
     SpriteRen.color = Color.red;
+
+    m_conditionFulfilled = m_conditionIsLit;
+
+    OnStateChange?.Invoke(m_conditionFulfilled);
     OnLit?.Invoke();
   }
 
@@ -71,6 +103,10 @@ public class Torch : MonoBehaviour
   {
     m_isLit = false;
     SpriteRen.color = Color.white;
+    
+    m_conditionFulfilled = !m_conditionIsLit;
+
+    OnStateChange?.Invoke(m_conditionFulfilled);
     OnUnlit?.Invoke();
   }
 
