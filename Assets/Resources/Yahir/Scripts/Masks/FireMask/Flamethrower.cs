@@ -15,6 +15,9 @@ public class Flamethrower : MonoBehaviour
 
   private bool _active = true;
 
+  [SerializeField]
+  private GameObject _spriteRender;
+
   // Start is called once before the first execution of Update after the MonoBehaviour is created
   void Start()
   {
@@ -33,9 +36,15 @@ public class Flamethrower : MonoBehaviour
 
       m_fireCollider.size = new Vector2(m_currentLength, m_fireCollider.size.y);
       m_fireCollider.offset = new Vector2(m_currentLength / 2f, 0f);
+      float visualScale = m_currentLength; 
+      _spriteRender.transform.localScale = new Vector3(visualScale, 1f, 1f);
+      //_spriteRender.transform.position = new Vector3(transform.position.x + m_currentLength / 2f, _spriteRender.transform.position.y, _spriteRender.transform.position.z);
+            //SpriteRenderer sr = _spriteRender.GetComponent<SpriteRenderer>();
+            //sr.transform.
     }
     else
     {
+      transform.position = _fireMaskGameObject.transform.position;
       m_currentLength = Mathf.MoveTowards(m_currentLength,
                                           0f,
                                           m_shrinkSpeed * Time.deltaTime);
@@ -45,22 +54,36 @@ public class Flamethrower : MonoBehaviour
       m_fireCollider.offset = new Vector2(m_maxLength - (m_currentLength / 2f),
                                           0f);
 
+      float visualScale = m_currentLength;
+      _spriteRender.transform.localScale = new Vector3(visualScale, 1f, 1f);
+      //_spriteRender.transform.localScale = new Vector3(m_fireCollider.size.x, 1.0f, 1.0f);
+      //_spriteRender.transform.position = new Vector3(transform.position.x + m_fireCollider.offset.x, transform.position.y, transform.position.z);
       if (m_currentLength <= 0.01f)
       {
         gameObject.SetActive(false);
         Destroy(gameObject);
       }
     }
-  }
+
+    }
 
   public void activeFlamethrower(Vector2 direction)
   {
     transform.right = direction;
     m_currentLength = 0f;
+    //_spriteRender.transform.right = direction;
     _active = true;
   }
 
-  public void deactivateFlamethrower()
+    private void OnDrawGizmos()
+    {
+        if (!m_fireCollider) return;
+
+        Gizmos.color = UnityEngine.Color.black;
+        Gizmos.DrawWireCube(m_fireCollider.bounds.center, m_fireCollider.bounds.size);
+    }
+
+    public void deactivateFlamethrower()
   {
     _active = false;
   }
