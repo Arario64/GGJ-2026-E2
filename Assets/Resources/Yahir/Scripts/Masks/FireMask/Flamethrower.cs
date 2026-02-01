@@ -5,6 +5,9 @@ public class Flamethrower : MonoBehaviour
 {
   [SerializeField] private BoxCollider2D m_fireCollider;
 
+  [SerializeField]
+  private LayerMask m_wallLayer;
+
   private GameObject _fireMaskGameObject;
 
   public float m_currentLength = 0f;
@@ -18,7 +21,9 @@ public class Flamethrower : MonoBehaviour
   [SerializeField]
   private GameObject _spriteRender;
 
-  // Start is called once before the first execution of Update after the MonoBehaviour is created
+  public LineRenderer m_lineRenderer;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
   void Start()
   {
     //_rectangle = GetComponent<Rectangle>();
@@ -34,9 +39,11 @@ public class Flamethrower : MonoBehaviour
                                           m_maxLength,
                                           m_growSpeed * Time.deltaTime);
 
-      m_fireCollider.size = new Vector2(m_currentLength, m_fireCollider.size.y);
-      m_fireCollider.offset = new Vector2(m_currentLength / 2f, 0f);
-      float visualScale = m_currentLength; 
+      shootLaser();
+
+      //m_fireCollider.size = new Vector2(m_currentLength, m_fireCollider.size.y);
+      //m_fireCollider.offset = new Vector2(m_currentLength / 2f, 0f);
+      float visualScale = m_fireCollider.size.x; 
       _spriteRender.transform.localScale = new Vector3(visualScale, 1f, 1f);
       //_spriteRender.transform.position = new Vector3(transform.position.x + m_currentLength / 2f, _spriteRender.transform.position.y, _spriteRender.transform.position.z);
             //SpriteRenderer sr = _spriteRender.GetComponent<SpriteRenderer>();
@@ -51,7 +58,7 @@ public class Flamethrower : MonoBehaviour
 
       m_fireCollider.size = new Vector2(m_currentLength, m_fireCollider.size.y);
 
-      m_fireCollider.offset = new Vector2(m_maxLength - (m_currentLength / 2f),
+      m_fireCollider.offset = new Vector2(m_currentLength - (m_currentLength / 2f),
                                           0f);
 
       float visualScale = m_currentLength;
@@ -91,5 +98,37 @@ public class Flamethrower : MonoBehaviour
   public void setGameObject(GameObject GO)
   {
     _fireMaskGameObject = GO;
+  }
+
+  void shootLaser()
+  {
+    RaycastHit2D hit = Physics2D.Raycast(_fireMaskGameObject.transform.position, transform.right, m_currentLength, m_wallLayer);
+
+    if (hit.collider != null)
+    {
+        Draw2dRay(_fireMaskGameObject.transform.position, hit.point);
+        m_currentLength = hit.point.x;
+    }
+    else
+    {
+        Vector2 endPos = _fireMaskGameObject.transform.position + (Vector3)(transform.right * m_currentLength);
+        Draw2dRay(_fireMaskGameObject.transform.position, endPos);
+    }
+  }
+
+  void Draw2dRay(Vector2 starPos, Vector2 endPos)
+  {
+    m_lineRenderer.SetPosition(0, starPos);
+    m_lineRenderer.SetPosition(1, endPos);
+
+    Vector2 startLocal = transform.InverseTransformPoint(starPos);
+    Vector2 endLocal = transform.InverseTransformPoint(endPos);
+
+    Vector2 size = new Vector2(Mathf.Abs(endLocal.x - startLocal.x), 1.0f);
+
+    Vector2 offset = startLocal + (endLocal - startLocal) / 2f;
+
+    m_fireCollider.offset = offset;
+    m_fireCollider.size = size;
   }
 }
