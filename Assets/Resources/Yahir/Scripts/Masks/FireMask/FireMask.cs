@@ -53,7 +53,7 @@ public class FireMask : Mask
     _flamethrowerGO = Instantiate(m_flamethrower);
     _flamethrower = _flamethrowerGO.GetComponent<Flamethrower>();
     _flamethrowerGO.SetActive(true);
-    _flamethrower.activeFlamethrower(GameManager.Instance.Player.LastMovingDir);
+    _flamethrower.activeFlamethrower(GameManager.Instance.Player.LastAimingDir);
     _flamethrower.setGameObject(gameObject);
 
     m_active = true;
