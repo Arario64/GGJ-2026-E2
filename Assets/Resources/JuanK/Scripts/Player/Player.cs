@@ -321,17 +321,21 @@ public class Player : MonoBehaviour
 
   public void OnPosition(InputAction.CallbackContext context)
   {
-      m_lastAimingDir = context.ReadValue<Vector2>();
+    m_lastAimingDir = context.ReadValue<Vector2>();
   }
   public void OnMousePosition(InputAction.CallbackContext context)
   {
-        m_mouseScreenPos = context.ReadValue<Vector2>();
+    if (this == null)
+    {
+      return;
+    }
+    m_mouseScreenPos = context.ReadValue<Vector2>();
 
-        Vector3 mouseWorld = cam.ScreenToWorldPoint(m_mouseScreenPos);
-        mouseWorld.z = 0;
+    Vector3 mouseWorld = cam.ScreenToWorldPoint(m_mouseScreenPos);
+    mouseWorld.z = 0;
 
-        Vector2 direction = (mouseWorld - transform.position).normalized;
-        m_lastAimingDir = direction;
+    Vector2 direction = (mouseWorld - transform.position).normalized;
+    m_lastAimingDir = direction;
     }
 
     private void OnDeactivateMask(InputAction.CallbackContext context)

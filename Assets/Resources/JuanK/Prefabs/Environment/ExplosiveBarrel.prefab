@@ -153,8 +153,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 0.6559752, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: d5e62dd54d28aab4b9ba6ace4dc56ff0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -197,8 +197,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0.043917987, y: -0.029278658}
+  m_Size: {x: 1.5758147, y: 2.4489417}
   m_Direction: 0
 --- !u!114 &2281722037401336308
 MonoBehaviour:
@@ -212,6 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e1f56c4a149ad4bb15450afb4c49f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplosiveBarrel
+  m_barrelSprite: {fileID: 21300000, guid: d5e62dd54d28aab4b9ba6ace4dc56ff0, type: 3}
+  m_barrelSpriteExploded: {fileID: 21300000, guid: 81b68a78f49d79b4c9ee457255f5b453, type: 3}
   m_explosionTimer: 2.5
 --- !u!50 &7862343525897264410
 Rigidbody2D:
