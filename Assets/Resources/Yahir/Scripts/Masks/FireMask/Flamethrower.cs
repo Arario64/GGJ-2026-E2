@@ -23,6 +23,10 @@ public class Flamethrower : MonoBehaviour
 
   public LineRenderer m_lineRenderer;
 
+    bool _collision = false;
+
+    float currentSize = 0.0f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
   void Start()
   {
@@ -108,12 +112,21 @@ public class Flamethrower : MonoBehaviour
     if (hit.collider != null)
     {
         Draw2dRay(_fireMaskGameObject.transform.position, hit.point);
-        m_currentLength = hit.point.x;
+        if (!_collision)
+        {
+            currentSize = m_currentLength;
+            _collision = true;
+        }
+        else
+        {
+            m_currentLength = currentSize;
+        }
     }
     else
     {
         Vector2 endPos = _fireMaskGameObject.transform.position + (Vector3)(transform.right * m_currentLength);
         Draw2dRay(_fireMaskGameObject.transform.position, endPos);
+        _collision = false;
     }
   }
 
