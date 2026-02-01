@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
 
   private bool _isDeth = false;
 
+  private Vector2 m_mouseScreenPos;
+
   [SerializeField]
   private float m_timeOfDeth = 1.5f;
 
@@ -64,8 +66,7 @@ public class Player : MonoBehaviour
       return m_idleState;
     }
   }
-
-  public IState MoveState
+    public IState MoveState
   {
     get {
       if (m_moveState == null)
@@ -195,8 +196,10 @@ public class Player : MonoBehaviour
     InputActions.Playing.ActivateMask.canceled += OnDeactivateMask;
     InputActions.Playing.InventoryKeyboard.performed += OnInventoryKeyboard;
     InputActions.Playing.InventoryMousewheel.performed += OnInventoryInputMouse;
+    InputActions.Playing.Position.performed += OnPosition;
+    InputActions.Playing.MousePosition.performed += OnMousePosition;
 
-    LastCheckpoint = transform.position;
+        LastCheckpoint = transform.position;
 
     //GameManager.Instance.UI.UpdateKeysText(m_keysCollected);
   }
@@ -213,7 +216,7 @@ public class Player : MonoBehaviour
   private void OnMoveInput(InputAction.CallbackContext context)
   {
     m_movingDir = context.ReadValue<Vector2>();
-    m_lastMovingDir = m_movingDir;
+    //m_lastMovingDir = m_movingDir;
   }
 
   private void OnCancelMoveInput(InputAction.CallbackContext context)
@@ -232,7 +235,19 @@ public class Player : MonoBehaviour
     }
   }
 
-  private void OnDeactivateMask(InputAction.CallbackContext context)
+  public void OnPosition(InputAction.CallbackContext context)
+  {
+      m_lastMovingDir = context.ReadValue<Vector2>();
+  }
+  public void OnMousePosition(InputAction.CallbackContext context)
+  {
+      m_mouseScreenPos = context.ReadValue<Vector2>();
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(m_mouseScreenPos);
+        Vector2 dir = mouseWorldPos - transform.position;
+        m_lastMovingDir = dir.normalized;
+  }
+
+    private void OnDeactivateMask(InputAction.CallbackContext context)
   {
     int count = m_masks.Count;
     if (m_currMask >= 0 && m_currMask < count)

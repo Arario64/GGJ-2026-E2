@@ -59,6 +59,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Position",
+                    "type": "Value",
+                    "id": "6384f20c-c990-4c5e-82e9-9bac45e0d29a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "f1e8880e-8e87-4145-9758-17841a706f88",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -265,7 +283,7 @@
                     "id": "bb175fbf-0ad1-42f0-a48f-f8ed96ad63c9",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Scale(factor=2)",
                     "groups": "",
                     "action": "ActivateMask",
                     "isComposite": false,
@@ -446,6 +464,28 @@
                     "action": "InventoryMousewheel",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "529b54cb-d793-4077-acda-bdb2d0b41adf",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Joystick;Gamepad",
+                    "action": "Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4f12f2e8-1035-400b-8db7-e5f5b25dd741",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
