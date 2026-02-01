@@ -8,13 +8,11 @@ public class Turret : MonoBehaviour
   private bool m_isFiring = false;
 
   private SpriteRenderer SpriteRen;
-  private Color OGColor;
 
   // Start is called once before the first execution of Update after the MonoBehaviour is created
   void Start()
   {
     SpriteRen = GetComponent<SpriteRenderer>();
-    OGColor = SpriteRen.color;
   }
 
   // Update is called once per frame
@@ -66,15 +64,14 @@ public class Turret : MonoBehaviour
 
   private void Attack()
   {
-    //Just visual function for now
-    SpriteRen.color = Color.red;
+    SpriteRen.color = new(1.0f, 0.5716981f, 0.5716981f, 1.0f);
     m_isFiring = true;
   }
 
   private void StopAttacking()
   {
     //Just visual function for now
-    SpriteRen.color = OGColor;
+    SpriteRen.color = Color.white;
     m_isFiring = false;
   }
 }
