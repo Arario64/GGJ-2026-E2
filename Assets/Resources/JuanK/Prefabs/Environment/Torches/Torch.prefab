@@ -228,9 +228,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Torch
   m_litSprite: {fileID: 21300000, guid: ed91d7a0501bb0a4f87dc63a4f04570e, type: 3}
-  m_lightObj: {fileID: 0}
+  m_lightObj: {fileID: 5173945016681235280}
   m_unlitSprite: {fileID: 21300000, guid: a37c16085478f9c4691d18d69d2a439f, type: 3}
   m_starstLit: 0
-  m_lifetime: 2
+  m_lifetime: 7
   m_foreverLit: 0
   m_conditionIsLit: 0
