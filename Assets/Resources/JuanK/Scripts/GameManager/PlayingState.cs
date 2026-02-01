@@ -11,8 +11,8 @@ public class PlayingState : IState
     GameManager.Instance.InputActions.Playing.Enable();
     GameManager.Instance.Player.gameObject.SetActive(true);
 
-    Cursor.visible = false;
-    Cursor.lockState = CursorLockMode.Confined;
+    Cursor.visible = true;
+    Cursor.lockState = CursorLockMode.None;
   }
 
   public void Execute()
