@@ -1045,9 +1045,6 @@ namespace Unity.VisualScripting.Generated.Aot
 	// --------------- Plugin Stubs
 	// --------------- Asset Stubs
 	// --------------- Scene Stubs
-	// --------------- Scene Stubs
-	// --------------- Scene Stubs
-	// --------------- Scene Stubs
 	[UnityEngine.Scripting.PreserveAttribute()]
 	public class AotStubs
 	{
