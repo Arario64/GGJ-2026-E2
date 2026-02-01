@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ExplosiveBarrel : MonoBehaviour
 {
+  [SerializeField] private Sprite m_barrelSprite;
+  [SerializeField] private Sprite m_barrelSpriteExploded;
   [SerializeField] private float m_explosionTimer = 2.5f;
 
   SpriteRenderer m_spriteRen;
@@ -29,6 +31,8 @@ public class ExplosiveBarrel : MonoBehaviour
       if (m_timer >= m_explosionTimer)
       {
         m_explotionCollider.enabled = true;
+        m_spriteRen.sprite = m_barrelSpriteExploded;
+        m_spriteRen.color = Color.white;
         //TODO: Replace the timed destroy with an animation
         //Destroy(gameObject);
       }
