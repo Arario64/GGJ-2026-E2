@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TorchDoor : MonoBehaviour
 {
+  [SerializeField] private Sprite m_openDoorSprite;
+  [SerializeField] private Sprite m_closeDoorSprite;
+
   [SerializeField] private List<Torch> m_linkedTorches;
   private float m_fulfilledCount = 0;
 
@@ -22,25 +25,6 @@ public class TorchDoor : MonoBehaviour
 
     foreach (var torch in m_linkedTorches)
     {
-      //torch.OnLit += OnTorchLit;
-      //torch.OnUnlit += OnTorchUnlit;
-
-      //if (!m_openWhenLit)
-      //{
-      //  torch.IsForeverLit = true;
-      //  if (!torch.IsLit)
-      //  {
-      //    torch.Lit();
-      //  }
-      //}
-      //else
-      //{
-      //  if (torch.IsLit)
-      //  {
-      //    torch.Unlit();
-      //  }
-      //}
-
       if (torch.ConditionFulfilled)
       {
         ++m_fulfilledCount;
@@ -74,39 +58,6 @@ public class TorchDoor : MonoBehaviour
     }
   }
 
-  //private void OnTorchLit()
-  //{
-  //  ++m_fulfilledCount;
-  //  if (m_fulfilledCount == m_linkedTorches.Count && m_openWhenLit)
-  //  {
-  //    OpenDoor();
-  //  }
-  //}
-
-  //private void OnTorchUnlit()
-  //{
-  //  --m_fulfilledCount;
-  //  if (m_openWhenLit)
-  //  {
-  //    if (m_isOpen)
-  //    {
-  //      return;
-  //    }
-
-  //    if (m_fulfilledCount < m_linkedTorches.Count)
-  //    {
-  //      CloseDoor();
-  //    }
-  //  }
-  //  else
-  //  {
-  //    if (m_fulfilledCount == 0)
-  //    {
-  //      OpenDoor();
-  //    }
-  //  }
-  //}
-
   // Update is called once per frame
   void Update()
   {
@@ -128,18 +79,14 @@ public class TorchDoor : MonoBehaviour
 
     m_doorCollider.enabled = false;
 
-    Color color = m_spriteRen.color;
-    color.a = 0.2f;
-    m_spriteRen.color = color;
+    m_spriteRen.sprite = m_openDoorSprite;
   }
 
   private void CloseDoor()
   {
     m_doorCollider.enabled = true;
 
-    Color color = m_spriteRen.color;
-    color.a = 1.0f;
-    m_spriteRen.color = color;
+    m_spriteRen.sprite = m_closeDoorSprite;
   }
 
 }
