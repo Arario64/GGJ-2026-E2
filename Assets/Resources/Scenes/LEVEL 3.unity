@@ -5097,26 +5097,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1950770353}
     m_Modifications:
-    - target: {fileID: 4098105694955534064, guid: 077689dfcd667ad46b600f8713e2c349, type: 3}
-      propertyPath: m_Size.x
-      value: 2.467661
-      objectReference: {fileID: 0}
-    - target: {fileID: 4098105694955534064, guid: 077689dfcd667ad46b600f8713e2c349, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.13550138
-      objectReference: {fileID: 0}
-    - target: {fileID: 6509694221942003729, guid: 077689dfcd667ad46b600f8713e2c349, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6509694221942003729, guid: 077689dfcd667ad46b600f8713e2c349, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6509694221942003729, guid: 077689dfcd667ad46b600f8713e2c349, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6509694221942003729, guid: 077689dfcd667ad46b600f8713e2c349, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.47598
@@ -5812,7 +5792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1136253759051910841, guid: 393f5e48500ec0242a4b1400de151164, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 29.7
+      value: 29.33
       objectReference: {fileID: 0}
     - target: {fileID: 1136253759051910841, guid: 393f5e48500ec0242a4b1400de151164, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8496,7 +8476,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0
   m_Color: {r: 1, g: 0.2944445, b: 0, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.29
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -8519,8 +8499,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 3.65
+  m_PointLightInnerRadius: 1.82
+  m_PointLightOuterRadius: 4.66
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -8540,7 +8520,7 @@ Transform:
   m_GameObject: {fileID: 1250687873}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.17598, y: 18.94882, z: 0}
+  m_LocalPosition: {x: -8.85, y: 18.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27421,29 +27401,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1950770353}
     m_Modifications:
-    - target: {fileID: 4098105694955534064, guid: 077689dfcd667ad46b600f8713e2c349, type: 3}
-      propertyPath: m_Size.x
-      value: 2.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4098105694955534064, guid: 077689dfcd667ad46b600f8713e2c349, type: 3}
-      propertyPath: m_Size.y
-      value: 2.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4098105694955534064, guid: 077689dfcd667ad46b600f8713e2c349, type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4098105694955534064, guid: 077689dfcd667ad46b600f8713e2c349, type: 3}
-      propertyPath: m_Offset.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6509694221942003729, guid: 077689dfcd667ad46b600f8713e2c349, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.82402
+      value: 10.94
       objectReference: {fileID: 0}
     - target: {fileID: 6509694221942003729, guid: 077689dfcd667ad46b600f8713e2c349, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.44882
+      value: 7.7
       objectReference: {fileID: 0}
     - target: {fileID: 6509694221942003729, guid: 077689dfcd667ad46b600f8713e2c349, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27929,8 +27893,8 @@ SceneRoots:
   - {fileID: 1112480796}
   - {fileID: 1950770353}
   - {fileID: 26513483}
+  - {fileID: 2113837706}
   - {fileID: 1812903724}
   - {fileID: 1149526480}
-  - {fileID: 2113837706}
   - {fileID: 28152407}
   - {fileID: 1985996557}

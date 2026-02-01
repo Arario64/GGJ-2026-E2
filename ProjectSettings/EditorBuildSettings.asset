@@ -11,9 +11,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Resources/JuanK/Scenes/Test/TestScene.unity
     guid: fbce01eae19a09d4d88ac760cd98f9fc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Resources/Julieta/SceneLevel 1/MerchLevel1&2.unity
-    guid: bc44a3f171a482f44a98b89195e76402
+    guid: fed8f21a0edf88842801d62e59a20192
+  - enabled: 1
+    path: Assets/Resources/Julieta/SceneLevel 1/MerchLevel1,2 y 3 (COPIA DE PRUEBA)
+      2.unity
+    guid: 4d721cec454886a47adf61d487e111e2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
