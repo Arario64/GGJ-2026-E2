@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resources/JuanK/Julieta/DefintiveTiles.meta
 guid: 1dcc078956883fe4895324ff56a4e303
 folderAsset: yes
+========
+guid: bc44a3f171a482f44a98b89195e76402
+>>>>>>>> origin/Aramis:Assets/Resources/JuanK/Julieta/SceneLevel/MerchLevel1&2.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
