@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 42b70b00df1021f42b25f814cf23c6be
+guid: 35535184f44fdec4998191d171c7d020
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8367105309001220168
-    second: PAREJA_01_MASKED_0
+      213: 7148311684827109177
+    second: PAREJA_02_MASKED_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PAREJA_01_MASKED_0
+      name: PAREJA_02_MASKED_0
       rect:
         serializedVersion: 2
         x: 178
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8408d4d92fded1470800000000000000
-      internalID: 8367105309001220168
+      spriteID: 937d4ed9a97e33360800000000000000
+      internalID: 7148311684827109177
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PAREJA_01_MASKED_0: 8367105309001220168
+      PAREJA_02_MASKED_0: 7148311684827109177
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
