@@ -13,11 +13,12 @@ TagManager:
   - Explotion
   - Ice
   - Key
+  - WinZone
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Wall
   - Water
   - UI
   - 

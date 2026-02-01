@@ -102,7 +102,7 @@ Animator:
   m_GameObject: {fileID: 2467385547683704478}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6ee7f6a901844444c8c0fafb936245d8, type: 2}
+  m_Controller: {fileID: 9100000, guid: f708529cfa911ed4a822a79720d75b6b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -225,4 +225,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b9b4bb078fdb0a48ae11a8c7cdfd177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  m_baseAnimController: {fileID: 9100000, guid: 6ee7f6a901844444c8c0fafb936245d8, type: 2}
+  m_fireAnimController: {fileID: 9100000, guid: 80782c4d8ac140e4f8e8bbc8ec8db224, type: 2}
+  m_iceAnimController: {fileID: 9100000, guid: 41420125d95e3f84eb5d0cb460da6a34, type: 2}
+  m_invisibilityAnimController: {fileID: 9100000, guid: 57b27407de83cd941902ba14a125ca0b, type: 2}
+  m_teletransportAnimController: {fileID: 9100000, guid: e3da0af33c6dd68458fbec4c09ee638c, type: 2}
+  m_truthAnimController: {fileID: 9100000, guid: f708529cfa911ed4a822a79720d75b6b, type: 2}
   m_moveSpeed: 5
+  cam: {fileID: 0}
+  m_timeOfDeth: 1.5

@@ -30,11 +30,11 @@ public class ExplosiveBarrel : MonoBehaviour
       m_timer += time;
       if (m_timer >= m_explosionTimer)
       {
+        m_spriteRen.color = Color.white;
         m_explotionCollider.enabled = true;
         m_spriteRen.sprite = m_barrelSpriteExploded;
-        m_spriteRen.color = Color.white;
-        //TODO: Replace the timed destroy with an animation
-        //Destroy(gameObject);
+
+        Destroy(gameObject, 0.5f);
       }
     }
   }

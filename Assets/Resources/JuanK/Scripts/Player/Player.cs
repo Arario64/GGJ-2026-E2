@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
@@ -14,13 +15,24 @@ public class Player : MonoBehaviour
   private PlayerIdleState m_idleState;
   private PlayerMoveState m_moveState;
 
+  [SerializeField] private RuntimeAnimatorController m_baseAnimController;
+  [SerializeField] private RuntimeAnimatorController m_fireAnimController;
+  [SerializeField] private RuntimeAnimatorController m_iceAnimController;
+  [SerializeField] private RuntimeAnimatorController m_invisibilityAnimController;
+  [SerializeField] private RuntimeAnimatorController m_teletransportAnimController;
+  [SerializeField] private RuntimeAnimatorController m_truthAnimController;
+
   [SerializeField] private float m_moveSpeed = 5.0f;
+  [SerializeField]
+  public Camera cam;
   private Vector2 m_movingDir;
   private Vector2 m_lastMovingDir;
+  private Vector2 m_lastAimingDir;
 
   private Rigidbody2D m_rb;
   private SpriteRenderer m_spriteRen;
   private CapsuleCollider2D m_collider;
+  private Animator m_animator;
 
   private List<Mask> m_masks = new();
   private int m_currMask;
@@ -32,6 +44,8 @@ public class Player : MonoBehaviour
   private int m_keysCollected = 0;
 
   private bool _isDeth = false;
+
+  private Vector2 m_mouseScreenPos;
 
   [SerializeField]
   private float m_timeOfDeth = 1.5f;
@@ -65,8 +79,7 @@ public class Player : MonoBehaviour
       return m_idleState;
     }
   }
-
-  public IState MoveState
+    public IState MoveState
   {
     get {
       if (m_moveState == null)
@@ -86,6 +99,12 @@ public class Player : MonoBehaviour
   public Vector2 LastMovingDir
   {
     get { return m_lastMovingDir; }
+    set { m_lastMovingDir = value; }
+  }
+
+  public Vector2 LastAimingDir
+  {
+    get { return m_lastAimingDir; }
   }
 
   public float MoveSpeed
@@ -130,6 +149,47 @@ public class Player : MonoBehaviour
     {
       m_collider = value;
     }
+  }
+
+  public Animator Animator
+  {
+    get
+    {
+      if (m_animator == null)
+      {
+        m_animator = GetComponentInChildren<Animator>();
+      }
+      return m_animator;
+    }
+    set
+    {
+      m_animator = value;
+    }
+  }
+
+  public RuntimeAnimatorController BaseAnimController
+  {
+    get { return m_baseAnimController; }
+  }
+  public RuntimeAnimatorController FireAnimController
+  {
+    get { return m_fireAnimController; }
+  }
+  public RuntimeAnimatorController IceAnimController
+  {
+    get { return m_iceAnimController; }
+  }
+  public RuntimeAnimatorController InvisibilityAnimController
+  {
+    get { return m_invisibilityAnimController; }
+  }
+  public RuntimeAnimatorController TeletransportAnimController
+  {
+    get { return m_teletransportAnimController; }
+  }
+  public RuntimeAnimatorController TruthAnimController
+  {
+    get { return m_truthAnimController; }
   }
 
   public Mask CurrMask
@@ -203,6 +263,14 @@ public class Player : MonoBehaviour
     CustomAssert.IsNotNull(MoveState);
     CustomAssert.IsNotNull(SpriteRen);
     CustomAssert.IsNotNull(RB);
+    CustomAssert.IsNotNull(Collider);
+    CustomAssert.IsNotNull(Animator);
+    CustomAssert.IsNotNull(BaseAnimController);
+    CustomAssert.IsNotNull(FireAnimController);
+    CustomAssert.IsNotNull(IceAnimController);
+    CustomAssert.IsNotNull(InvisibilityAnimController);
+    CustomAssert.IsNotNull(TeletransportAnimController);
+    CustomAssert.IsNotNull(TruthAnimController);
 
     StateMachine.Init(IdleState);
 
@@ -212,8 +280,12 @@ public class Player : MonoBehaviour
     InputActions.Playing.ActivateMask.canceled += OnDeactivateMask;
     InputActions.Playing.InventoryKeyboard.performed += OnInventoryKeyboard;
     InputActions.Playing.InventoryMousewheel.performed += OnInventoryInputMouse;
+    InputActions.Playing.Position.performed += OnPosition;
+    InputActions.Playing.MousePosition.performed += OnMousePosition;
 
     LastCheckpoint = transform.position;
+
+    Animator.runtimeAnimatorController = BaseAnimController;
 
     //GameManager.Instance.UI.UpdateKeysText(m_keysCollected);
   }
@@ -230,7 +302,6 @@ public class Player : MonoBehaviour
   private void OnMoveInput(InputAction.CallbackContext context)
   {
     m_movingDir = context.ReadValue<Vector2>();
-    m_lastMovingDir = m_movingDir;
   }
 
   private void OnCancelMoveInput(InputAction.CallbackContext context)
@@ -245,11 +316,29 @@ public class Player : MonoBehaviour
     {
       Mask mask = m_masks[m_currMask];
       mask.Activate();
-
     }
   }
 
-  private void OnDeactivateMask(InputAction.CallbackContext context)
+  public void OnPosition(InputAction.CallbackContext context)
+  {
+    m_lastAimingDir = context.ReadValue<Vector2>();
+  }
+  public void OnMousePosition(InputAction.CallbackContext context)
+  {
+    if (this == null)
+    {
+      return;
+    }
+    m_mouseScreenPos = context.ReadValue<Vector2>();
+
+    Vector3 mouseWorld = cam.ScreenToWorldPoint(m_mouseScreenPos);
+    mouseWorld.z = 0;
+
+    Vector2 direction = (mouseWorld - transform.position).normalized;
+    m_lastAimingDir = direction;
+    }
+
+    private void OnDeactivateMask(InputAction.CallbackContext context)
   {
     int count = m_masks.Count;
     if (m_currMask >= 0 && m_currMask < count)
@@ -285,7 +374,7 @@ public class Player : MonoBehaviour
       m_currMask = slot;
       GameManager.Instance.UI.UpdateMaskPower(m_masks[m_currMask]);
     }
-
+    OnSwitchMask();
   }
 
   void OnInventoryInputMouse(InputAction.CallbackContext context)
@@ -327,6 +416,7 @@ public class Player : MonoBehaviour
     {
       m_masks[m_currMask].Activate();
     }
+    OnSwitchMask();
   }
 
     // Update is called once per frame
@@ -361,6 +451,7 @@ public class Player : MonoBehaviour
         mask.transform.localPosition = Vector3.zero;
         mask.SpriteRen.enabled = false;
         mask.Collider.enabled = false;
+        OnSwitchMask();
       }
     }
 
@@ -387,10 +478,14 @@ public class Player : MonoBehaviour
 
     if (collision.CompareTag("Hazard") || collision.CompareTag("Explotion"))
     {
-      //TODO: Check if create a death state with animation
       _isDeth = true;
     }
 
+    if (collision.CompareTag("WinZone"))
+    {
+      GameManager.Instance.IsGameOver = true;
+      GameManager.Instance.IsGameWon = true;
+    }
   }
 
   private void OnTriggerStay2D(Collider2D collision)
@@ -417,5 +512,28 @@ public class Player : MonoBehaviour
     }
   }
 
-  
+  void OnSwitchMask()
+  {
+    switch (CurrMask.Type)
+    {
+      case MaskTypes.FIRE:
+        Animator.runtimeAnimatorController = FireAnimController;
+        break;
+      case MaskTypes.ICE:
+        Animator.runtimeAnimatorController = IceAnimController;
+        break;
+      case MaskTypes.TRUTH:
+        Animator.runtimeAnimatorController = TruthAnimController;
+        break;
+      case MaskTypes.INVISIBILITY:
+        Animator.runtimeAnimatorController = InvisibilityAnimController;
+        break;
+      case MaskTypes.TELEPORT:
+        Animator.runtimeAnimatorController = TeletransportAnimController;
+        break;
+      default:
+        break;
+    }
+  }
+
 }
