@@ -684,7 +684,7 @@ public class UIManager : MonoBehaviour
   public void OnPlayFromMenuClicked()
   {
     GameManager.Instance.Playing = true;
-    //GameManager.Instance.ResetGame();
+    GameManager.Instance.ResetGame();
   }
 
   public void OnHowToPlayClicked()

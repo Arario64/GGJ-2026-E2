@@ -145,6 +145,24 @@ public partial class @IA_Player: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Position"",
+                    ""type"": ""Value"",
+                    ""id"": ""6384f20c-c990-4c5e-82e9-9bac45e0d29a"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""f1e8880e-8e87-4145-9758-17841a706f88"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -351,7 +369,7 @@ public partial class @IA_Player: IInputActionCollection2, IDisposable
                     ""id"": ""bb175fbf-0ad1-42f0-a48f-f8ed96ad63c9"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""Scale(factor=2)"",
                     ""groups"": """",
                     ""action"": ""ActivateMask"",
                     ""isComposite"": false,
@@ -532,6 +550,28 @@ public partial class @IA_Player: IInputActionCollection2, IDisposable
                     ""action"": ""InventoryMousewheel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""529b54cb-d793-4077-acda-bdb2d0b41adf"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Joystick;Gamepad"",
+                    ""action"": ""Position"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f12f2e8-1035-400b-8db7-e5f5b25dd741"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1182,6 +1222,8 @@ public partial class @IA_Player: IInputActionCollection2, IDisposable
         m_Playing_ActivateMask = m_Playing.FindAction("ActivateMask", throwIfNotFound: true);
         m_Playing_InventoryKeyboard = m_Playing.FindAction("InventoryKeyboard", throwIfNotFound: true);
         m_Playing_InventoryMousewheel = m_Playing.FindAction("InventoryMousewheel", throwIfNotFound: true);
+        m_Playing_Position = m_Playing.FindAction("Position", throwIfNotFound: true);
+        m_Playing_MousePosition = m_Playing.FindAction("MousePosition", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1286,6 +1328,8 @@ public partial class @IA_Player: IInputActionCollection2, IDisposable
     private readonly InputAction m_Playing_ActivateMask;
     private readonly InputAction m_Playing_InventoryKeyboard;
     private readonly InputAction m_Playing_InventoryMousewheel;
+    private readonly InputAction m_Playing_Position;
+    private readonly InputAction m_Playing_MousePosition;
     /// <summary>
     /// Provides access to input actions defined in input action map "Playing".
     /// </summary>
@@ -1321,6 +1365,14 @@ public partial class @IA_Player: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Playing/InventoryMousewheel".
         /// </summary>
         public InputAction @InventoryMousewheel => m_Wrapper.m_Playing_InventoryMousewheel;
+        /// <summary>
+        /// Provides access to the underlying input action "Playing/Position".
+        /// </summary>
+        public InputAction @Position => m_Wrapper.m_Playing_Position;
+        /// <summary>
+        /// Provides access to the underlying input action "Playing/MousePosition".
+        /// </summary>
+        public InputAction @MousePosition => m_Wrapper.m_Playing_MousePosition;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1365,6 +1417,12 @@ public partial class @IA_Player: IInputActionCollection2, IDisposable
             @InventoryMousewheel.started += instance.OnInventoryMousewheel;
             @InventoryMousewheel.performed += instance.OnInventoryMousewheel;
             @InventoryMousewheel.canceled += instance.OnInventoryMousewheel;
+            @Position.started += instance.OnPosition;
+            @Position.performed += instance.OnPosition;
+            @Position.canceled += instance.OnPosition;
+            @MousePosition.started += instance.OnMousePosition;
+            @MousePosition.performed += instance.OnMousePosition;
+            @MousePosition.canceled += instance.OnMousePosition;
         }
 
         /// <summary>
@@ -1394,6 +1452,12 @@ public partial class @IA_Player: IInputActionCollection2, IDisposable
             @InventoryMousewheel.started -= instance.OnInventoryMousewheel;
             @InventoryMousewheel.performed -= instance.OnInventoryMousewheel;
             @InventoryMousewheel.canceled -= instance.OnInventoryMousewheel;
+            @Position.started -= instance.OnPosition;
+            @Position.performed -= instance.OnPosition;
+            @Position.canceled -= instance.OnPosition;
+            @MousePosition.started -= instance.OnMousePosition;
+            @MousePosition.performed -= instance.OnMousePosition;
+            @MousePosition.canceled -= instance.OnMousePosition;
         }
 
         /// <summary>
@@ -1843,6 +1907,20 @@ public partial class @IA_Player: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInventoryMousewheel(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Position" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPosition(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MousePosition" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMousePosition(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

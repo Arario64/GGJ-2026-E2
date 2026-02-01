@@ -14,6 +14,13 @@ public class Player : MonoBehaviour
   private PlayerIdleState m_idleState;
   private PlayerMoveState m_moveState;
 
+  [SerializeField] private RuntimeAnimatorController m_baseAnimController;
+  [SerializeField] private RuntimeAnimatorController m_fireAnimController;
+  [SerializeField] private RuntimeAnimatorController m_iceAnimController;
+  [SerializeField] private RuntimeAnimatorController m_invisibilityAnimController;
+  [SerializeField] private RuntimeAnimatorController m_teletransportAnimController;
+  [SerializeField] private RuntimeAnimatorController m_truthAnimController;
+
   [SerializeField] private float m_moveSpeed = 5.0f;
   private Vector2 m_movingDir;
   private Vector2 m_lastMovingDir;
@@ -21,6 +28,7 @@ public class Player : MonoBehaviour
   private Rigidbody2D m_rb;
   private SpriteRenderer m_spriteRen;
   private CapsuleCollider2D m_collider;
+  private Animator m_animator;
 
   private List<Mask> m_masks = new();
   private int m_currMask;
@@ -32,6 +40,8 @@ public class Player : MonoBehaviour
   private int m_keysCollected = 0;
 
   private bool _isDeth = false;
+
+  private Vector2 m_mouseScreenPos;
 
   [SerializeField]
   private float m_timeOfDeth = 1.5f;
@@ -65,8 +75,7 @@ public class Player : MonoBehaviour
       return m_idleState;
     }
   }
-
-  public IState MoveState
+    public IState MoveState
   {
     get {
       if (m_moveState == null)
@@ -130,6 +139,47 @@ public class Player : MonoBehaviour
     {
       m_collider = value;
     }
+  }
+
+  public Animator Animator
+  {
+    get
+    {
+      if (m_animator == null)
+      {
+        m_animator = GetComponentInChildren<Animator>();
+      }
+      return m_animator;
+    }
+    set
+    {
+      m_animator = value;
+    }
+  }
+
+  public RuntimeAnimatorController BaseAnimController
+  {
+    get { return m_baseAnimController; }
+  }
+  public RuntimeAnimatorController FireAnimController
+  {
+    get { return m_fireAnimController; }
+  }
+  public RuntimeAnimatorController IceAnimController
+  {
+    get { return m_iceAnimController; }
+  }
+  public RuntimeAnimatorController InvisibilityAnimController
+  {
+    get { return m_invisibilityAnimController; }
+  }
+  public RuntimeAnimatorController TeletransportAnimController
+  {
+    get { return m_teletransportAnimController; }
+  }
+  public RuntimeAnimatorController TruthAnimController
+  {
+    get { return m_truthAnimController; }
   }
 
   public Mask CurrMask
@@ -203,6 +253,14 @@ public class Player : MonoBehaviour
     CustomAssert.IsNotNull(MoveState);
     CustomAssert.IsNotNull(SpriteRen);
     CustomAssert.IsNotNull(RB);
+    CustomAssert.IsNotNull(Collider);
+    CustomAssert.IsNotNull(Animator);
+    CustomAssert.IsNotNull(BaseAnimController);
+    CustomAssert.IsNotNull(FireAnimController);
+    CustomAssert.IsNotNull(IceAnimController);
+    CustomAssert.IsNotNull(InvisibilityAnimController);
+    CustomAssert.IsNotNull(TeletransportAnimController);
+    CustomAssert.IsNotNull(TruthAnimController);
 
     StateMachine.Init(IdleState);
 
@@ -212,8 +270,12 @@ public class Player : MonoBehaviour
     InputActions.Playing.ActivateMask.canceled += OnDeactivateMask;
     InputActions.Playing.InventoryKeyboard.performed += OnInventoryKeyboard;
     InputActions.Playing.InventoryMousewheel.performed += OnInventoryInputMouse;
+    InputActions.Playing.Position.performed += OnPosition;
+    InputActions.Playing.MousePosition.performed += OnMousePosition;
 
-    LastCheckpoint = transform.position;
+        LastCheckpoint = transform.position;
+
+    Animator.runtimeAnimatorController = BaseAnimController;
 
     //GameManager.Instance.UI.UpdateKeysText(m_keysCollected);
   }
@@ -230,7 +292,7 @@ public class Player : MonoBehaviour
   private void OnMoveInput(InputAction.CallbackContext context)
   {
     m_movingDir = context.ReadValue<Vector2>();
-    m_lastMovingDir = m_movingDir;
+    //m_lastMovingDir = m_movingDir;
   }
 
   private void OnCancelMoveInput(InputAction.CallbackContext context)
@@ -249,7 +311,19 @@ public class Player : MonoBehaviour
     }
   }
 
-  private void OnDeactivateMask(InputAction.CallbackContext context)
+  public void OnPosition(InputAction.CallbackContext context)
+  {
+      m_lastMovingDir = context.ReadValue<Vector2>();
+  }
+  public void OnMousePosition(InputAction.CallbackContext context)
+  {
+      m_mouseScreenPos = context.ReadValue<Vector2>();
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(m_mouseScreenPos);
+        Vector2 dir = mouseWorldPos - transform.position;
+        m_lastMovingDir = dir.normalized;
+  }
+
+    private void OnDeactivateMask(InputAction.CallbackContext context)
   {
     int count = m_masks.Count;
     if (m_currMask >= 0 && m_currMask < count)

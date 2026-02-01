@@ -20,7 +20,8 @@ public class PlayerMoveState : IState
         Vector2 newPos = m_player.RB.position +
                      m_player.MovingDir * m_player.MoveSpeed * Time.fixedDeltaTime;
         m_player.RB.MovePosition(newPos);
-    }
+
+  }
 
   public IState CheckExitConditions()
   {
