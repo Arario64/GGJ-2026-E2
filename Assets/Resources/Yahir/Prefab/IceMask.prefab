@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IceMask
   m_maxPower: 100
-  m_useCost: 10
+  m_useCost: 30
   m_rechargeRate: 50
   m_isFreeToUse: 0
   m_color: {r: 0.21960784, g: 0.5882353, b: 0.84313726, a: 0.6}
