@@ -321,17 +321,21 @@ public class Player : MonoBehaviour
 
   public void OnPosition(InputAction.CallbackContext context)
   {
-      m_lastAimingDir = context.ReadValue<Vector2>();
+    m_lastAimingDir = context.ReadValue<Vector2>();
   }
   public void OnMousePosition(InputAction.CallbackContext context)
   {
-        m_mouseScreenPos = context.ReadValue<Vector2>();
+    if (this == null)
+    {
+      return;
+    }
+    m_mouseScreenPos = context.ReadValue<Vector2>();
 
-        Vector3 mouseWorld = cam.ScreenToWorldPoint(m_mouseScreenPos);
-        mouseWorld.z = 0;
+    Vector3 mouseWorld = cam.ScreenToWorldPoint(m_mouseScreenPos);
+    mouseWorld.z = 0;
 
-        Vector2 direction = (mouseWorld - transform.position).normalized;
-        m_lastAimingDir = direction;
+    Vector2 direction = (mouseWorld - transform.position).normalized;
+    m_lastAimingDir = direction;
     }
 
     private void OnDeactivateMask(InputAction.CallbackContext context)
@@ -474,10 +478,14 @@ public class Player : MonoBehaviour
 
     if (collision.CompareTag("Hazard") || collision.CompareTag("Explotion"))
     {
-      //TODO: Check if create a death state with animation
       _isDeth = true;
     }
 
+    if (collision.CompareTag("WinZone"))
+    {
+      GameManager.Instance.IsGameOver = true;
+      GameManager.Instance.IsGameWon = true;
+    }
   }
 
   private void OnTriggerStay2D(Collider2D collision)

@@ -13,6 +13,7 @@ TagManager:
   - Explotion
   - Ice
   - Key
+  - WinZone
   layers:
   - Default
   - TransparentFX
