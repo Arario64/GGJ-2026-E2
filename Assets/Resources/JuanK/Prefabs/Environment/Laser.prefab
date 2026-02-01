@@ -142,5 +142,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b59a44683610e94ba7ae91587cbf037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Laser
-  m_speed: 10
+  m_speed: 15
   m_lifeTime: 2

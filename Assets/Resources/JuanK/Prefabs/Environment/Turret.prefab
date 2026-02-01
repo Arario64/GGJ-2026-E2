@@ -142,4 +142,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Turret
   m_laserPrefab: {fileID: 5663175778592987237, guid: af0c480d6d650cb4db3e64450b666b3e, type: 3}
-  m_fireRate: 1
+  m_fireRate: 2
