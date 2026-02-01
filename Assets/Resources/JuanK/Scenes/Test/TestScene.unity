@@ -2175,10 +2175,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1680815104157696254, guid: 2a91d8320ed6af745832d11280339221, type: 3}
-      propertyPath: m_animatorController
-      value: 
-      objectReference: {fileID: 9100000, guid: 6ee7f6a901844444c8c0fafb936245d8, type: 2}
     - target: {fileID: 2809142014261524635, guid: 2a91d8320ed6af745832d11280339221, type: 3}
       propertyPath: m_Name
       value: Player

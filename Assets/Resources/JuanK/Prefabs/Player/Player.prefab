@@ -232,3 +232,4 @@ MonoBehaviour:
   m_teletransportAnimController: {fileID: 9100000, guid: 10eb2ee0b6301bb4786b14912d17381c, type: 2}
   m_truthAnimController: {fileID: 9100000, guid: 96bc440e92df8174b95050e95d3787e9, type: 2}
   m_moveSpeed: 5
+  m_timeOfDeth: 1.5
