@@ -39,6 +39,13 @@ public class Player : MonoBehaviour
 
   private int m_keysCollected = 0;
 
+  private bool _isDeth = false;
+
+  [SerializeField]
+  private float m_timeOfDeth = 1.5f;
+
+    private float _actualTimeDeth = 0.0f;
+
   private Vector2 m_lastCheckpoint;
   Warp m_touchingWarp;
 
@@ -382,8 +389,19 @@ public class Player : MonoBehaviour
   }
 
     // Update is called once per frame
-    void Update()
+  void Update()
   {
+      if (_isDeth)
+      {
+        _actualTimeDeth += Time.deltaTime;
+        if (_actualTimeDeth > m_timeOfDeth)
+        {
+          transform.position = LastCheckpoint;
+          _isDeth = false;
+          _actualTimeDeth = 0.0f;
+        }
+        return;
+      }
     StateMachine.Update();
     RB.WakeUp();
   }
@@ -429,7 +447,7 @@ public class Player : MonoBehaviour
     if (collision.CompareTag("Hazard") || collision.CompareTag("Explotion"))
     {
       //TODO: Check if create a death state with animation
-      transform.position = LastCheckpoint;
+      _isDeth = true;
     }
 
   }
@@ -441,7 +459,7 @@ public class Player : MonoBehaviour
       WaterIceAbyss waterIce = collision.GetComponent<WaterIceAbyss>();
       if (waterIce && !waterIce.IsFrozen)
       {
-        transform.position = LastCheckpoint;
+        _isDeth = true;
       }
     }
   }
