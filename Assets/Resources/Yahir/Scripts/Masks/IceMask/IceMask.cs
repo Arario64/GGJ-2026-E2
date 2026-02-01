@@ -31,15 +31,23 @@ public class IceMask : Mask
 
   public override bool Activate()
   {
+    if (!base.Activate())
+    {
+      return false;
+    }
+
     _icePowerGO = Instantiate(m_icePower);
     _icePower = _icePowerGO.GetComponent<IcePower>();
     _icePowerGO.SetActive(true);
     _icePower.activeFlamethrower(GameManager.Instance.Player.LastMovingDir);
     _icePower.setGameObject(gameObject);
+
+    m_active = true;
     return true;
   }
   public override void Deactivate()
   {
+    m_active = false;
     _icePower.deactivateFlamethrower();
   }
 }
