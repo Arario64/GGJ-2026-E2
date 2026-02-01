@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
   public Camera cam;
   private Vector2 m_movingDir;
   private Vector2 m_lastMovingDir;
+  private Vector2 m_lastAimingDir;
 
   private Rigidbody2D m_rb;
   private SpriteRenderer m_spriteRen;
@@ -98,6 +99,12 @@ public class Player : MonoBehaviour
   public Vector2 LastMovingDir
   {
     get { return m_lastMovingDir; }
+    set { m_lastMovingDir = value; }
+  }
+
+  public Vector2 LastAimingDir
+  {
+    get { return m_lastAimingDir; }
   }
 
   public float MoveSpeed
@@ -276,7 +283,7 @@ public class Player : MonoBehaviour
     InputActions.Playing.Position.performed += OnPosition;
     InputActions.Playing.MousePosition.performed += OnMousePosition;
 
-        LastCheckpoint = transform.position;
+    LastCheckpoint = transform.position;
 
     Animator.runtimeAnimatorController = BaseAnimController;
 
@@ -314,7 +321,7 @@ public class Player : MonoBehaviour
 
   public void OnPosition(InputAction.CallbackContext context)
   {
-      m_lastMovingDir = context.ReadValue<Vector2>();
+      m_lastAimingDir = context.ReadValue<Vector2>();
   }
   public void OnMousePosition(InputAction.CallbackContext context)
   {
@@ -324,7 +331,7 @@ public class Player : MonoBehaviour
         mouseWorld.z = 0;
 
         Vector2 direction = (mouseWorld - transform.position).normalized;
-        m_lastMovingDir = direction;
+        m_lastAimingDir = direction;
     }
 
     private void OnDeactivateMask(InputAction.CallbackContext context)
@@ -363,7 +370,7 @@ public class Player : MonoBehaviour
       m_currMask = slot;
       GameManager.Instance.UI.UpdateMaskPower(m_masks[m_currMask]);
     }
-
+    OnSwitchMask();
   }
 
   void OnInventoryInputMouse(InputAction.CallbackContext context)
@@ -405,6 +412,7 @@ public class Player : MonoBehaviour
     {
       m_masks[m_currMask].Activate();
     }
+    OnSwitchMask();
   }
 
     // Update is called once per frame
@@ -439,6 +447,7 @@ public class Player : MonoBehaviour
         mask.transform.localPosition = Vector3.zero;
         mask.SpriteRen.enabled = false;
         mask.Collider.enabled = false;
+        OnSwitchMask();
       }
     }
 
@@ -495,5 +504,28 @@ public class Player : MonoBehaviour
     }
   }
 
-  
+  void OnSwitchMask()
+  {
+    switch (CurrMask.Type)
+    {
+      case MaskTypes.FIRE:
+        Animator.runtimeAnimatorController = FireAnimController;
+        break;
+      case MaskTypes.ICE:
+        Animator.runtimeAnimatorController = IceAnimController;
+        break;
+      case MaskTypes.TRUTH:
+        Animator.runtimeAnimatorController = TruthAnimController;
+        break;
+      case MaskTypes.INVISIBILITY:
+        Animator.runtimeAnimatorController = InvisibilityAnimController;
+        break;
+      case MaskTypes.TELEPORT:
+        Animator.runtimeAnimatorController = TeletransportAnimController;
+        break;
+      default:
+        break;
+    }
+  }
+
 }

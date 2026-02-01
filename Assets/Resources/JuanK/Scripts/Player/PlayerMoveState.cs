@@ -21,6 +21,14 @@ public class PlayerMoveState : IState
                      m_player.MovingDir * m_player.MoveSpeed * Time.fixedDeltaTime;
         m_player.RB.MovePosition(newPos);
 
+    if (m_player.MovingDir != Vector2.zero)
+      m_player.LastMovingDir = m_player.MovingDir;
+
+    m_player.LastMovingDir.Normalize();
+
+    m_player.Animator.SetFloat("speedX", m_player.LastMovingDir.x);
+    m_player.Animator.SetFloat("speedY", m_player.LastMovingDir.y);
+
   }
 
   public IState CheckExitConditions()
