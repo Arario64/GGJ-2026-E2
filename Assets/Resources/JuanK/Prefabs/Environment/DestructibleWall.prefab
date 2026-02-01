@@ -81,8 +81,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2135585597343286014, guid: 5aa8b770bc43046bc8d993d0d5b7f4a5, type: 3}
-  m_Color: {r: 0.65882355, g: 0.5176471, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 64c976b4c852ff54b91818e63b2bb627, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -119,7 +119,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.77, y: -1.82, z: 0}
-  m_LocalScale: {x: 1, y: 1.7405, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5815952295653473778}
@@ -169,7 +169,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.8828125, y: 1}
+  m_Size: {x: 2.5, y: 2.5}
   m_EdgeRadius: 0
 --- !u!114 &8554032050613775178
 MonoBehaviour:
@@ -183,3 +183,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66530097856c3224ca547f6f155ec64e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestructibleWall
+  m_intactWallSprite: {fileID: 21300000, guid: 64c976b4c852ff54b91818e63b2bb627, type: 3}
+  m_destroyedWallSprite: {fileID: 21300000, guid: 15de2356fa1323944adb47a2cd814b11, type: 3}
