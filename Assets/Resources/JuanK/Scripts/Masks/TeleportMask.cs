@@ -29,7 +29,6 @@ public class TeleportMask : Mask
 
     player.CanTeleport = true;
     m_active = true;
-
     return true;
   }
 

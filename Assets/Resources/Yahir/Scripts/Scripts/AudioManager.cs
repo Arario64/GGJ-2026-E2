@@ -26,7 +26,13 @@ public enum SFXTag
     Laser_01,
     Deth,
     Achievement_01,
-    Achievement_02
+    Achievement_02,
+    FireAttack,
+    IceAttack,
+    Invisibility,
+    Steps,
+    Teleport,
+    Truth
 }
 
 public class AudioManager : Singletone<AudioManager>

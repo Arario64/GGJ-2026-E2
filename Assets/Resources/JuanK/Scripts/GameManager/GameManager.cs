@@ -215,6 +215,7 @@ public class GameManager : MonoBehaviour
 
     Player.gameObject.SetActive(false);
     StateMachine.Init(MainMenuState);
+    AudioManager.Instance.PlayMusic(MusicTag.Menu);
   }
 
   // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -248,12 +249,12 @@ public class GameManager : MonoBehaviour
   public void ResetGame()
   {
     Playing = true;
-
+    AudioManager.Instance.PlayMusic(MusicTag.Mazmorra_01);
     //int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-    SceneManager.LoadScene(0);
+    //SceneManager.LoadScene(0);
 
     //Player.Reset();
-  }
+    }
 
   public void QuitGame()
   {

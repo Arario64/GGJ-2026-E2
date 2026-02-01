@@ -316,6 +316,23 @@ public class Player : MonoBehaviour
     {
       Mask mask = m_masks[m_currMask];
       mask.Activate();
+      switch (CurrMask.Type)
+      {
+          case MaskTypes.FIRE:
+              AudioManager.Instance.PlaySfx(SFXTag.FireAttack);
+              break;
+          case MaskTypes.ICE:
+              AudioManager.Instance.PlaySfx(SFXTag.IceAttack);
+              break;
+          case MaskTypes.TRUTH:
+              AudioManager.Instance.PlaySfx(SFXTag.Truth);
+              break;
+          case MaskTypes.INVISIBILITY:
+              AudioManager.Instance.PlaySfx(SFXTag.Invisibility);
+              break;
+          default:
+              break;
+      }
     }
   }
 
@@ -424,6 +441,10 @@ public class Player : MonoBehaviour
   {
       if (_isDeth)
       {
+        if (_actualTimeDeth == 0.0f)
+        {
+          AudioManager.Instance.PlaySfx(SFXTag.Deth);
+        }
         _actualTimeDeth += Time.deltaTime;
         if (_actualTimeDeth > m_timeOfDeth)
         {
@@ -444,6 +465,7 @@ public class Player : MonoBehaviour
       Mask mask = collision.GetComponent<Mask>();
       if (mask && !m_masks.Contains(mask))
       {
+        AudioManager.Instance.PlaySfx(SFXTag.Achievement_01);
         m_masks.Add(mask);
         m_currMask = m_masks.Count - 1;
         GameManager.Instance.UI.AddMaskToInventory(mask, m_currMask == 0);

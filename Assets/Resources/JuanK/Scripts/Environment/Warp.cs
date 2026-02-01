@@ -24,6 +24,7 @@ public class Warp : MonoBehaviour
       Player player = GameManager.Instance.Player;
       if (player.CanTeleport)
       {
+        AudioManager.Instance.PlaySfx(SFXTag.Teleport);
         player.transform.position = m_destiny.position;
         player.CanTeleport = false;
       }

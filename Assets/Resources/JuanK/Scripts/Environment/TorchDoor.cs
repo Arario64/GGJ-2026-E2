@@ -80,7 +80,9 @@ public class TorchDoor : MonoBehaviour
     m_doorCollider.enabled = false;
 
     m_spriteRen.sprite = m_openDoorSprite;
-  }
+
+    AudioManager.Instance.PlaySfx(SFXTag.Achievement_02);
+    }
 
   private void CloseDoor()
   {

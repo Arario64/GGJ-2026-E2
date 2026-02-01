@@ -24,6 +24,7 @@ public class Turret : MonoBehaviour
       m_nextFireTime += Time.deltaTime;
       if (m_nextFireTime >= m_fireRate)
       {
+        AudioManager.Instance.PlaySfx(SFXTag.Laser_01);
         Vector3 playerColliderPos = GameManager.Instance.Player.Collider.bounds.center;
 
         Vector2 direction = playerColliderPos - transform.position;
