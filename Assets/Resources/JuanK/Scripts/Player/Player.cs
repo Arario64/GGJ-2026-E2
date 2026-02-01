@@ -14,6 +14,13 @@ public class Player : MonoBehaviour
   private PlayerIdleState m_idleState;
   private PlayerMoveState m_moveState;
 
+  [SerializeField] private RuntimeAnimatorController m_baseAnimController;
+  [SerializeField] private RuntimeAnimatorController m_fireAnimController;
+  [SerializeField] private RuntimeAnimatorController m_iceAnimController;
+  [SerializeField] private RuntimeAnimatorController m_invisibilityAnimController;
+  [SerializeField] private RuntimeAnimatorController m_teletransportAnimController;
+  [SerializeField] private RuntimeAnimatorController m_truthAnimController;
+
   [SerializeField] private float m_moveSpeed = 5.0f;
   private Vector2 m_movingDir;
   private Vector2 m_lastMovingDir;
@@ -21,6 +28,7 @@ public class Player : MonoBehaviour
   private Rigidbody2D m_rb;
   private SpriteRenderer m_spriteRen;
   private CapsuleCollider2D m_collider;
+  private Animator m_animator;
 
   private List<Mask> m_masks = new();
   private int m_currMask;
@@ -125,6 +133,47 @@ public class Player : MonoBehaviour
     }
   }
 
+  public Animator Animator
+  {
+    get
+    {
+      if (m_animator == null)
+      {
+        m_animator = GetComponentInChildren<Animator>();
+      }
+      return m_animator;
+    }
+    set
+    {
+      m_animator = value;
+    }
+  }
+
+  public RuntimeAnimatorController BaseAnimController
+  {
+    get { return m_baseAnimController; }
+  }
+  public RuntimeAnimatorController FireAnimController
+  {
+    get { return m_fireAnimController; }
+  }
+  public RuntimeAnimatorController IceAnimController
+  {
+    get { return m_iceAnimController; }
+  }
+  public RuntimeAnimatorController InvisibilityAnimController
+  {
+    get { return m_invisibilityAnimController; }
+  }
+  public RuntimeAnimatorController TeletransportAnimController
+  {
+    get { return m_teletransportAnimController; }
+  }
+  public RuntimeAnimatorController TruthAnimController
+  {
+    get { return m_truthAnimController; }
+  }
+
   public Mask CurrMask
   {
     get
@@ -196,6 +245,14 @@ public class Player : MonoBehaviour
     CustomAssert.IsNotNull(MoveState);
     CustomAssert.IsNotNull(SpriteRen);
     CustomAssert.IsNotNull(RB);
+    CustomAssert.IsNotNull(Collider);
+    CustomAssert.IsNotNull(Animator);
+    CustomAssert.IsNotNull(BaseAnimController);
+    CustomAssert.IsNotNull(FireAnimController);
+    CustomAssert.IsNotNull(IceAnimController);
+    CustomAssert.IsNotNull(InvisibilityAnimController);
+    CustomAssert.IsNotNull(TeletransportAnimController);
+    CustomAssert.IsNotNull(TruthAnimController);
 
     StateMachine.Init(IdleState);
 
@@ -207,6 +264,8 @@ public class Player : MonoBehaviour
     InputActions.Playing.InventoryMousewheel.performed += OnInventoryInputMouse;
 
     LastCheckpoint = transform.position;
+
+    Animator.runtimeAnimatorController = BaseAnimController;
 
     //GameManager.Instance.UI.UpdateKeysText(m_keysCollected);
   }
