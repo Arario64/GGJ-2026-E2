@@ -33,7 +33,8 @@ public class ExplosiveBarrel : MonoBehaviour
         m_spriteRen.color = Color.white;
         m_explotionCollider.enabled = true;
         m_spriteRen.sprite = m_barrelSpriteExploded;
-
+        AudioManager.Instance.PlaySfx(SFXTag.Explosion_01);
+        m_isGoingToExplode = false;
         Destroy(gameObject, 0.5f);
       }
     }
