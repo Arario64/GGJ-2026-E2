@@ -331,7 +331,7 @@ public class Player : MonoBehaviour
         mouseWorld.z = 0;
 
         Vector2 direction = (mouseWorld - transform.position).normalized;
-        m_lastMovingDir = direction;
+        m_lastAimingDir = direction;
     }
 
     private void OnDeactivateMask(InputAction.CallbackContext context)
