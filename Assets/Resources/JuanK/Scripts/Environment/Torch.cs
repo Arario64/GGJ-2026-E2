@@ -57,18 +57,19 @@ public class Torch : MonoBehaviour
     }
   }
 
-  private void Awake()
-  {
-    m_spriteRen = GetComponent<SpriteRenderer>();
-    if (m_starstLit)
+    private void Awake()
     {
-      Lit();
+        m_spriteRen = GetComponent<SpriteRenderer>();
+        if (m_starstLit)
+        {
+            Lit();
+        }
+        else
+        {
+            Unlit();
+        }
+        //m_lightObj = transform.GetChild(0).gameObject;
     }
-    else
-    {
-      Unlit();
-    }
-  }
 
   // Start is called once before the first execution of Update after the MonoBehaviour is created
   void Start()

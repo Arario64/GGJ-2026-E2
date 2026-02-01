@@ -839,6 +839,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thorns
       objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Size.y
+      value: 0.66976905
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.17511547
+      objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5
@@ -1451,6 +1459,14 @@ PrefabInstance:
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6649053
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.17754734
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2776,6 +2792,14 @@ PrefabInstance:
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6843612
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.16781938
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9695,11 +9719,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2969127000226163930, guid: c4fdfd909bd5a0c47b6dbb28b9e7f674, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.42
+      value: 2.16
       objectReference: {fileID: 0}
     - target: {fileID: 2969127000226163930, guid: c4fdfd909bd5a0c47b6dbb28b9e7f674, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.72
+      value: -1.44
       objectReference: {fileID: 0}
     - target: {fileID: 2969127000226163930, guid: c4fdfd909bd5a0c47b6dbb28b9e7f674, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11108,9 +11132,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 52830454}
     m_Modifications:
+    - target: {fileID: 5173945016681235280, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7287980919081877803, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
       propertyPath: m_Name
-      value: Torch (2)
+      value: Torch Puzzle A
       objectReference: {fileID: 0}
     - target: {fileID: 7751843807207336607, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
       propertyPath: m_SortingOrder
@@ -11154,6 +11182,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8416417965562759513, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8642038596511092576, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
+      propertyPath: m_lightObj
+      value: 
+      objectReference: {fileID: 969094915}
+    - target: {fileID: 8642038596511092576, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
+      propertyPath: m_starstLit
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8642038596511092576, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
@@ -11591,6 +11627,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
   m_PrefabInstance: {fileID: 1671462292}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &776280870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5173945016681235280, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
+  m_PrefabInstance: {fileID: 1572116944}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &778335307
 PrefabInstance:
@@ -24873,6 +24914,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6105199390134559720, guid: e797875d2f5bc2546bb73af062276f6b, type: 3}
   m_PrefabInstance: {fileID: 966370932}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &969094915 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5173945016681235280, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
+  m_PrefabInstance: {fileID: 695849937}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &969704625
 GameObject:
   m_ObjectHideFlags: 0
@@ -27176,6 +27222,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thorns
       objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Size.y
+      value: 0.66976905
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.17511547
+      objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.5
@@ -27706,7 +27760,7 @@ GameObject:
   - component: {fileID: 1279635994}
   - component: {fileID: 1279635993}
   m_Layer: 0
-  m_Name: Sprite Light 2D
+  m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27949,11 +28003,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6614881898859280357, guid: 2a91d8320ed6af745832d11280339221, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: -2.88
       objectReference: {fileID: 0}
     - target: {fileID: 6614881898859280357, guid: 2a91d8320ed6af745832d11280339221, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.92
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6614881898859280357, guid: 2a91d8320ed6af745832d11280339221, type: 3}
       propertyPath: m_LocalPosition.z
@@ -30266,6 +30320,14 @@ PrefabInstance:
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6697681
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.17511594
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34835,6 +34897,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8642038596511092576, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
+      propertyPath: m_lightObj
+      value: 
+      objectReference: {fileID: 776280870}
+    - target: {fileID: 8642038596511092576, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
       propertyPath: m_starstLit
       value: 1
       objectReference: {fileID: 0}
@@ -37003,6 +37069,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thorns
       objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Size.y
+      value: 0.67463374
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.17268312
+      objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.5
@@ -37195,6 +37269,14 @@ PrefabInstance:
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Size.y
+      value: 0.66976905
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.17511547
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37944,6 +38026,14 @@ PrefabInstance:
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Size.y
+      value: 0.66976905
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.17511547
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
