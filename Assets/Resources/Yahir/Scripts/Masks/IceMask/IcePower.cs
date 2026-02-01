@@ -40,7 +40,7 @@ public class IcePower : MonoBehaviour
                 m_fireCollider.size = new Vector2(m_currentLength, m_fireCollider.size.y);
                 m_fireCollider.offset = new Vector2(m_currentLength / 2f, 0f);
                 float visualScale = m_currentLength;
-                _spriteRender.transform.localScale = new Vector3(visualScale, 1f, 1f);
+                _spriteRender.transform.localScale = new Vector3(visualScale / 2, 1f, 1f);
                 _growthTime = 0.0f;
             }
             else if (_growthTime > 0.5f && m_currentLength >= m_maxLength)
@@ -59,7 +59,7 @@ public class IcePower : MonoBehaviour
                 m_fireCollider.offset = new Vector2(m_maxLength - (m_currentLength / 2f),
                                                     0f);
                 float visualScale = m_currentLength;
-                _spriteRender.transform.localScale = new Vector3(visualScale, 1f, 1f);
+                _spriteRender.transform.localScale = new Vector3(visualScale / 2, 1f, 1f);
                 if (m_currentLength <= 0.01f)
                 {
                     gameObject.SetActive(false);
