@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
 
   private Rigidbody2D m_rb;
   private SpriteRenderer m_spriteRen;
+  private CapsuleCollider2D m_collider;
 
   private List<Mask> m_masks = new();
   private int m_currMask;
@@ -105,6 +106,22 @@ public class Player : MonoBehaviour
         m_rb = GetComponent<Rigidbody2D>();
       }
       return m_rb;
+    }
+  }
+
+  public CapsuleCollider2D Collider
+  {
+    get
+    {
+      if (m_collider == null)
+      {
+        m_collider = GetComponent<CapsuleCollider2D>();
+      }
+      return m_collider;
+    }
+    set
+    {
+      m_collider = value;
     }
   }
 
