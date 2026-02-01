@@ -34,7 +34,7 @@ public class Flamethrower : MonoBehaviour
   {
     if (_active)
     {
-      transform.right = GameManager.Instance.Player.LastMovingDir;
+      transform.right = GameManager.Instance.Player.LastAimingDir;
       transform.position = _fireMaskGameObject.transform.position;
       m_currentLength = Mathf.MoveTowards(m_currentLength,
                                           m_maxLength,

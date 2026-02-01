@@ -2253,6 +2253,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 207198881341220078, guid: 2a91d8320ed6af745832d11280339221, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f708529cfa911ed4a822a79720d75b6b, type: 2}
+    - target: {fileID: 1680815104157696254, guid: 2a91d8320ed6af745832d11280339221, type: 3}
+      propertyPath: m_iceAnimController
+      value: 
+      objectReference: {fileID: 9100000, guid: 41420125d95e3f84eb5d0cb460da6a34, type: 2}
+    - target: {fileID: 1680815104157696254, guid: 2a91d8320ed6af745832d11280339221, type: 3}
+      propertyPath: m_truthAnimController
+      value: 
+      objectReference: {fileID: 9100000, guid: f708529cfa911ed4a822a79720d75b6b, type: 2}
+    - target: {fileID: 1680815104157696254, guid: 2a91d8320ed6af745832d11280339221, type: 3}
+      propertyPath: m_invisibilityAnimController
+      value: 
+      objectReference: {fileID: 9100000, guid: 57b27407de83cd941902ba14a125ca0b, type: 2}
+    - target: {fileID: 1680815104157696254, guid: 2a91d8320ed6af745832d11280339221, type: 3}
+      propertyPath: m_teletransportAnimController
+      value: 
+      objectReference: {fileID: 9100000, guid: e3da0af33c6dd68458fbec4c09ee638c, type: 2}
     - target: {fileID: 2809142014261524635, guid: 2a91d8320ed6af745832d11280339221, type: 3}
       propertyPath: m_Name
       value: Player

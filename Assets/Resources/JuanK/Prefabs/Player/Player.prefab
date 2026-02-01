@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   m_baseAnimController: {fileID: 9100000, guid: 6ee7f6a901844444c8c0fafb936245d8, type: 2}
-  m_fireAnimController: {fileID: 9100000, guid: c19764ef17d55b646a6b188dfa529fab, type: 2}
+  m_fireAnimController: {fileID: 9100000, guid: 80782c4d8ac140e4f8e8bbc8ec8db224, type: 2}
   m_iceAnimController: {fileID: 9100000, guid: 40bbbfa9402dd7d4ca57e8291f313efb, type: 2}
   m_invisibilityAnimController: {fileID: 9100000, guid: 8d7d7840718c46846931094b8b2031a9, type: 2}
   m_teletransportAnimController: {fileID: 9100000, guid: 10eb2ee0b6301bb4786b14912d17381c, type: 2}

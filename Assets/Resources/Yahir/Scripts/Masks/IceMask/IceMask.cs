@@ -39,7 +39,7 @@ public class IceMask : Mask
     _icePowerGO = Instantiate(m_icePower);
     _icePower = _icePowerGO.GetComponent<IcePower>();
     _icePowerGO.SetActive(true);
-    _icePower.activeFlamethrower(GameManager.Instance.Player.LastMovingDir);
+    _icePower.activeFlamethrower(GameManager.Instance.Player.LastAimingDir);
     _icePower.setGameObject(gameObject);
 
     m_active = true;
