@@ -24,7 +24,9 @@ public class Turret : MonoBehaviour
       m_nextFireTime += Time.deltaTime;
       if (m_nextFireTime >= m_fireRate)
       {
-        Vector2 direction = GameManager.Instance.Player.transform.position - transform.position;
+        Vector3 playerColliderPos = GameManager.Instance.Player.Collider.bounds.center;
+
+        Vector2 direction = playerColliderPos - transform.position;
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle - 90.0f, Vector3.forward);
