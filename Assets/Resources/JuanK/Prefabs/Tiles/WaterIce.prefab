@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: daf8d351a4b119e4b87dbdb3fefe1343, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d6cfa7e25c2ede546b2971ee6bfa4c26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaterIce
   m_abyssSprite: {fileID: -755843935, guid: e5bea9cae44e70f478b9651250caae9a, type: 3}
   m_isAbyss: 0
-  m_waterSprite: {fileID: 21300000, guid: daf8d351a4b119e4b87dbdb3fefe1343, type: 3}
-  m_iceSprite: {fileID: 21300000, guid: 9a42a0cd349a9284db1f640e1ec45645, type: 3}
+  m_waterSprite: {fileID: 21300000, guid: d6cfa7e25c2ede546b2971ee6bfa4c26, type: 3}
+  m_iceSprite: {fileID: 21300000, guid: f125c16e30f101646ba87ad1b71d5aac, type: 3}
   m_meltingTimer: 10
   m_canMelt: 1
