@@ -8,6 +8,7 @@ public class Torch : MonoBehaviour
   public event Action OnUnlit;
 
   [SerializeField] private Sprite m_litSprite;
+  [SerializeField] private GameObject m_lightObj;
   [SerializeField] private Sprite m_unlitSprite;
 
   [SerializeField] private bool m_starstLit = false;
@@ -56,18 +57,19 @@ public class Torch : MonoBehaviour
     }
   }
 
-  private void Awake()
-  {
-    m_spriteRen = GetComponent<SpriteRenderer>();
-    if (m_starstLit)
+    private void Awake()
     {
-      Lit();
+        m_spriteRen = GetComponent<SpriteRenderer>();
+        if (m_starstLit)
+        {
+            Lit();
+        }
+        else
+        {
+            Unlit();
+        }
+        //m_lightObj = transform.GetChild(0).gameObject;
     }
-    else
-    {
-      Unlit();
-    }
-  }
 
   // Start is called once before the first execution of Update after the MonoBehaviour is created
   void Start()
@@ -94,6 +96,7 @@ public class Torch : MonoBehaviour
   public void Lit()
   {
     m_isLit = true;
+    m_lightObj.SetActive(true);
     SpriteRen.sprite = m_litSprite;
 
     m_conditionFulfilled = m_conditionIsLit;
@@ -105,6 +108,7 @@ public class Torch : MonoBehaviour
   public void Unlit()
   {
     m_isLit = false;
+    m_lightObj.SetActive(false);
     SpriteRen.sprite = m_unlitSprite;
 
     m_conditionFulfilled = !m_conditionIsLit;

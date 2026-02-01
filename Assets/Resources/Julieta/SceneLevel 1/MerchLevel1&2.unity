@@ -839,6 +839,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thorns
       objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Size.y
+      value: 0.66976905
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.17511547
+      objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5
@@ -1451,6 +1459,14 @@ PrefabInstance:
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6649053
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.17754734
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2773,21 +2789,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2098461423}
     m_Modifications:
-    - target: {fileID: 943268712590450360, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179660239452457498, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
       objectReference: {fileID: 0}
-    - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6843612
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.16781938
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3559,21 +3571,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2098461423}
     m_Modifications:
-    - target: {fileID: 943268712590450360, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179660239452457498, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
-      objectReference: {fileID: 0}
-    - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3808,21 +3808,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2098461423}
     m_Modifications:
-    - target: {fileID: 943268712590450360, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179660239452457498, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
-      objectReference: {fileID: 0}
-    - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3881,7 +3869,7 @@ GameObject:
   - component: {fileID: 459768169}
   - component: {fileID: 459768168}
   - component: {fileID: 459768167}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9731,11 +9719,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2969127000226163930, guid: c4fdfd909bd5a0c47b6dbb28b9e7f674, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.42
+      value: 2.16
       objectReference: {fileID: 0}
     - target: {fileID: 2969127000226163930, guid: c4fdfd909bd5a0c47b6dbb28b9e7f674, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.72
+      value: -1.44
       objectReference: {fileID: 0}
     - target: {fileID: 2969127000226163930, guid: c4fdfd909bd5a0c47b6dbb28b9e7f674, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10956,21 +10944,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2098461423}
     m_Modifications:
-    - target: {fileID: 943268712590450360, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179660239452457498, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
-      objectReference: {fileID: 0}
-    - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11099,21 +11075,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2098461423}
     m_Modifications:
-    - target: {fileID: 943268712590450360, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179660239452457498, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
-      objectReference: {fileID: 0}
-    - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11168,9 +11132,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 52830454}
     m_Modifications:
+    - target: {fileID: 5173945016681235280, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7287980919081877803, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
       propertyPath: m_Name
-      value: Torch (2)
+      value: Torch Puzzle A
       objectReference: {fileID: 0}
     - target: {fileID: 7751843807207336607, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
       propertyPath: m_SortingOrder
@@ -11214,6 +11182,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8416417965562759513, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8642038596511092576, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
+      propertyPath: m_lightObj
+      value: 
+      objectReference: {fileID: 969094915}
+    - target: {fileID: 8642038596511092576, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
+      propertyPath: m_starstLit
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8642038596511092576, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
@@ -11567,21 +11543,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2098461423}
     m_Modifications:
-    - target: {fileID: 943268712590450360, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179660239452457498, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
-      objectReference: {fileID: 0}
-    - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11663,6 +11627,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
   m_PrefabInstance: {fileID: 1671462292}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &776280870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5173945016681235280, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
+  m_PrefabInstance: {fileID: 1572116944}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &778335307
 PrefabInstance:
@@ -24945,6 +24914,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6105199390134559720, guid: e797875d2f5bc2546bb73af062276f6b, type: 3}
   m_PrefabInstance: {fileID: 966370932}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &969094915 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5173945016681235280, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
+  m_PrefabInstance: {fileID: 695849937}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &969704625
 GameObject:
   m_ObjectHideFlags: 0
@@ -25065,6 +25039,7 @@ Transform:
   - {fileID: 1019983561}
   - {fileID: 438302622}
   - {fileID: 518317506}
+  - {fileID: 1394040972}
   m_Father: {fileID: 1261529134}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &969704627
@@ -25707,21 +25682,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2098461423}
     m_Modifications:
-    - target: {fileID: 943268712590450360, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179660239452457498, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
-      objectReference: {fileID: 0}
-    - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25962,21 +25925,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2098461423}
     m_Modifications:
-    - target: {fileID: 943268712590450360, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179660239452457498, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
-      objectReference: {fileID: 0}
-    - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27267,21 +27218,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2098461423}
     m_Modifications:
-    - target: {fileID: 943268712590450360, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179660239452457498, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
       objectReference: {fileID: 0}
-    - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Size.y
+      value: 0.66976905
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.17511547
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27802,6 +27749,90 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+--- !u!1 &1279635992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1279635994}
+  - component: {fileID: 1279635993}
+  m_Layer: 0
+  m_Name: Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1279635993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279635992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.2D.Runtime::UnityEngine.Rendering.Universal.Light2D
+  m_ComponentVersion: 2
+  m_LightType: 4
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 0.2
+  m_LightVolumeIntensity: 1
+  m_LightVolumeEnabled: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 21300000, guid: 119f93d0bcbf1e743bf5fcf237507d39, type: 3}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowsEnabled: 1
+  m_ShadowIntensity: 0.75
+  m_ShadowSoftness: 0.3
+  m_ShadowSoftnessFalloffIntensity: 0.5
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: -0.00024998188, y: -0.000100016594, z: 0}
+    m_Extent: {x: 1.00045, y: 1.0009, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
+--- !u!4 &1279635994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279635992}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5, y: 3.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1283952208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27972,11 +28003,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6614881898859280357, guid: 2a91d8320ed6af745832d11280339221, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.94
+      value: -2.88
       objectReference: {fileID: 0}
     - target: {fileID: 6614881898859280357, guid: 2a91d8320ed6af745832d11280339221, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.36
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6614881898859280357, guid: 2a91d8320ed6af745832d11280339221, type: 3}
       propertyPath: m_LocalPosition.z
@@ -28899,6 +28930,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
   m_PrefabInstance: {fileID: 1432937980}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1394040971
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 969704626}
+    m_Modifications:
+    - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Name
+      value: Thorns
+      objectReference: {fileID: 0}
+    - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+--- !u!4 &1394040972 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+  m_PrefabInstance: {fileID: 1394040971}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1397950649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29052,21 +29145,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2098461423}
     m_Modifications:
-    - target: {fileID: 943268712590450360, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179660239452457498, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
-      objectReference: {fileID: 0}
-    - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30122,21 +30203,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2098461423}
     m_Modifications:
-    - target: {fileID: 943268712590450360, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179660239452457498, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
-      objectReference: {fileID: 0}
-    - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30248,21 +30317,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2098461423}
     m_Modifications:
-    - target: {fileID: 943268712590450360, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179660239452457498, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
       objectReference: {fileID: 0}
-    - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6697681
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.17511594
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34832,6 +34897,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8642038596511092576, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
+      propertyPath: m_lightObj
+      value: 
+      objectReference: {fileID: 776280870}
+    - target: {fileID: 8642038596511092576, guid: 4788a8f051ca65645a31bc36b051ee2e, type: 3}
       propertyPath: m_starstLit
       value: 1
       objectReference: {fileID: 0}
@@ -35050,21 +35119,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2098461423}
     m_Modifications:
-    - target: {fileID: 943268712590450360, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179660239452457498, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
-      objectReference: {fileID: 0}
-    - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -35879,21 +35936,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2098461423}
     m_Modifications:
-    - target: {fileID: 943268712590450360, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179660239452457498, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
-      objectReference: {fileID: 0}
-    - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36832,21 +36877,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2098461423}
     m_Modifications:
-    - target: {fileID: 943268712590450360, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179660239452457498, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
-      objectReference: {fileID: 0}
-    - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37032,21 +37065,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2098461423}
     m_Modifications:
-    - target: {fileID: 943268712590450360, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3179660239452457498, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
       objectReference: {fileID: 0}
-    - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
-      propertyPath: m_Layer
-      value: 3
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Size.y
+      value: 0.67463374
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.17268312
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37240,6 +37269,14 @@ PrefabInstance:
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Size.y
+      value: 0.66976905
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.17511547
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37989,6 +38026,14 @@ PrefabInstance:
     - target: {fileID: 4507948819427504230, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_Name
       value: Thorns
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Size.y
+      value: 0.66976905
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331039149375014615, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.17511547
       objectReference: {fileID: 0}
     - target: {fileID: 9133322018214124054, guid: 87bdf54dc7644904fa02b302da01b648, type: 3}
       propertyPath: m_LocalPosition.x
@@ -39326,7 +39371,7 @@ GameObject:
   - component: {fileID: 2098461426}
   - component: {fileID: 2098461425}
   - component: {fileID: 2098461424}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45036,3 +45081,4 @@ SceneRoots:
   - {fileID: 958767489}
   - {fileID: 29321039}
   - {fileID: 1070338001}
+  - {fileID: 1279635994}
