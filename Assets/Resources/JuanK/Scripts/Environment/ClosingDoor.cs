@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class ClosingDoor : MonoBehaviour
 {
+  [SerializeField] Sprite m_openDoor;
+  [SerializeField] Sprite m_closeDoor;
+
   private BoxCollider2D m_doorCollider;
   private SpriteRenderer m_spriteRen;
 
@@ -23,18 +26,14 @@ public class ClosingDoor : MonoBehaviour
   {
     m_doorCollider.enabled = false;
 
-    Color color = m_spriteRen.color;
-    color.a = 0.2f;
-    m_spriteRen.color = color;
+    m_spriteRen.sprite = m_openDoor;
   }
 
   private void CloseDoor()
   {
     m_doorCollider.enabled = true;
 
-    Color color = m_spriteRen.color;
-    color.a = 1.0f;
-    m_spriteRen.color = color;
+    m_spriteRen.sprite = m_closeDoor;
   }
 
   private void OnTriggerStay2D(Collider2D collision)

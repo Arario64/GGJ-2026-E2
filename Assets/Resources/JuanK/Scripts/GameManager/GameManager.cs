@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
   private IA_Player m_playerInputActions;
   private Player m_player;
   private UIManager m_uiManager;
+  private WinZone m_winZone;
 
   private bool m_paused = false;
   private bool m_playing = false;
@@ -117,6 +120,23 @@ public class GameManager : MonoBehaviour
     }
   }
 
+  public WinZone WinZone
+  {
+    get
+    {
+      if (m_winZone == null)
+      {
+        int winZones = FindObjectsByType<WinZone>(FindObjectsSortMode.None).Length;
+        if (winZones > 1)
+        {
+          throw new System.Exception("There should be only one WinZone in the scene, but found: " + winZones);
+        }
+        m_winZone = FindFirstObjectByType<WinZone>();
+      }
+      return m_winZone;
+    }
+  }
+
   public bool Paused
   {
     get { return m_paused; }
@@ -179,6 +199,7 @@ public class GameManager : MonoBehaviour
     CustomAssert.IsNotNull(InputActions);
     CustomAssert.IsNotNull(Player);
     CustomAssert.IsNotNull(UI);
+    //CustomAssert.IsNotNull(WinZone);
     CustomAssert.IsNotNull(MainMenuState);
     CustomAssert.IsNotNull(PlayingState);
     CustomAssert.IsNotNull(PauseState);

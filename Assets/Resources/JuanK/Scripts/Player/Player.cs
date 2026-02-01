@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
   [SerializeField] private float m_moveSpeed = 5.0f;
   private Vector2 m_movingDir;
+  private Vector2 m_lastMovingDir;
 
   private Rigidbody2D m_rb;
   private SpriteRenderer m_spriteRen;
@@ -26,6 +27,8 @@ public class Player : MonoBehaviour
   private bool m_isInvisible = false;
   private bool m_isSeeingTruth = false;
   private bool m_canTeleport = false;
+
+  private int m_keysCollected = 0;
 
   private Vector2 m_lastCheckpoint;
   Warp m_touchingWarp;
@@ -72,6 +75,11 @@ public class Player : MonoBehaviour
     get { return m_movingDir; }
   }
 
+  public Vector2 LastMovingDir
+  {
+    get { return m_lastMovingDir; }
+  }
+
   public float MoveSpeed
   {
     get { return m_moveSpeed; }
@@ -111,6 +119,11 @@ public class Player : MonoBehaviour
       }
       return null;
     }
+  }
+
+  public int KeysCollected
+  {
+    get { return m_keysCollected; }
   }
 
   public bool IsInvisible
@@ -177,6 +190,8 @@ public class Player : MonoBehaviour
     InputActions.Playing.InventoryMousewheel.performed += OnInventoryInputMouse;
 
     LastCheckpoint = transform.position;
+
+    //GameManager.Instance.UI.UpdateKeysText(m_keysCollected);
   }
 
 
@@ -191,6 +206,7 @@ public class Player : MonoBehaviour
   private void OnMoveInput(InputAction.CallbackContext context)
   {
     m_movingDir = context.ReadValue<Vector2>();
+    m_lastMovingDir = m_movingDir;
   }
 
   private void OnCancelMoveInput(InputAction.CallbackContext context)
@@ -305,7 +321,7 @@ public class Player : MonoBehaviour
       {
         m_masks.Add(mask);
         m_currMask = m_masks.Count - 1;
-        GameManager.Instance.UI.AddMaskToInventory(mask);
+        GameManager.Instance.UI.AddMaskToInventory(mask, m_currMask == 0);
         mask.transform.parent = transform;
         mask.transform.localPosition = Vector3.zero;
         mask.SpriteRen.enabled = false;
@@ -325,6 +341,13 @@ public class Player : MonoBehaviour
     if (collision.CompareTag("Checkpoint"))
     {
       LastCheckpoint = collision.transform.position;
+    }
+
+    if (collision.CompareTag("Key"))
+    {
+      Destroy(collision.gameObject);
+      m_keysCollected++;
+      //GameManager.Instance.UI.UpdateKeysText(m_keysCollected);
     }
 
     if (collision.CompareTag("Hazard") || collision.CompareTag("Explotion"))

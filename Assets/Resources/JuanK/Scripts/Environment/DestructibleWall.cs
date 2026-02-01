@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class DestructibleWall : MonoBehaviour
 {
+  [SerializeField] private Sprite m_intactWallSprite;
+  [SerializeField] private Sprite m_destroyedWallSprite;
+
   private BoxCollider2D m_wallCollider;
   private SpriteRenderer m_spriteRen;
 
@@ -10,6 +13,8 @@ public class DestructibleWall : MonoBehaviour
   {
     m_wallCollider = GetComponent<BoxCollider2D>();
     m_spriteRen = GetComponentInChildren<SpriteRenderer>();
+
+    m_spriteRen.sprite = m_intactWallSprite;
   }
 
   // Update is called once per frame
@@ -23,7 +28,7 @@ public class DestructibleWall : MonoBehaviour
     m_wallCollider.enabled = false;
     Color color = m_spriteRen.color;
     color.a = 0.2f;
-    m_spriteRen.color = color;
+    m_spriteRen.sprite = m_destroyedWallSprite;
   }
 
   private void OnTriggerEnter2D(Collider2D collision)

@@ -7,6 +7,9 @@ public class Torch : MonoBehaviour
   public event Action OnLit;
   public event Action OnUnlit;
 
+  [SerializeField] private Sprite m_litSprite;
+  [SerializeField] private Sprite m_unlitSprite;
+
   [SerializeField] private bool m_starstLit = false;
   [SerializeField] private float m_lifetime = 5.0f;
 
@@ -91,7 +94,7 @@ public class Torch : MonoBehaviour
   public void Lit()
   {
     m_isLit = true;
-    SpriteRen.color = Color.red;
+    SpriteRen.sprite = m_litSprite;
 
     m_conditionFulfilled = m_conditionIsLit;
 
@@ -102,8 +105,8 @@ public class Torch : MonoBehaviour
   public void Unlit()
   {
     m_isLit = false;
-    SpriteRen.color = Color.white;
-    
+    SpriteRen.sprite = m_unlitSprite;
+
     m_conditionFulfilled = !m_conditionIsLit;
 
     OnStateChange?.Invoke(m_conditionFulfilled);
