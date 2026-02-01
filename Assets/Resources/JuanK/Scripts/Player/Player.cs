@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
@@ -22,6 +23,8 @@ public class Player : MonoBehaviour
   [SerializeField] private RuntimeAnimatorController m_truthAnimController;
 
   [SerializeField] private float m_moveSpeed = 5.0f;
+  [SerializeField]
+  public Camera cam;
   private Vector2 m_movingDir;
   private Vector2 m_lastMovingDir;
 
@@ -292,7 +295,6 @@ public class Player : MonoBehaviour
   private void OnMoveInput(InputAction.CallbackContext context)
   {
     m_movingDir = context.ReadValue<Vector2>();
-    //m_lastMovingDir = m_movingDir;
   }
 
   private void OnCancelMoveInput(InputAction.CallbackContext context)
@@ -307,7 +309,6 @@ public class Player : MonoBehaviour
     {
       Mask mask = m_masks[m_currMask];
       mask.Activate();
-
     }
   }
 
@@ -317,11 +318,14 @@ public class Player : MonoBehaviour
   }
   public void OnMousePosition(InputAction.CallbackContext context)
   {
-      m_mouseScreenPos = context.ReadValue<Vector2>();
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(m_mouseScreenPos);
-        Vector2 dir = mouseWorldPos - transform.position;
-        m_lastMovingDir = dir.normalized;
-  }
+        m_mouseScreenPos = context.ReadValue<Vector2>();
+
+        Vector3 mouseWorld = cam.ScreenToWorldPoint(m_mouseScreenPos);
+        mouseWorld.z = 0;
+
+        Vector2 direction = (mouseWorld - transform.position).normalized;
+        m_lastMovingDir = direction;
+    }
 
     private void OnDeactivateMask(InputAction.CallbackContext context)
   {
