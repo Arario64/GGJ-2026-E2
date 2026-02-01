@@ -87,13 +87,13 @@ public class Flamethrower : MonoBehaviour
     _active = true;
   }
 
-    private void OnDrawGizmos()
-    {
-        if (!m_fireCollider) return;
+    //private void OnDrawGizmos()
+    //{
+    //    if (!m_fireCollider) return;
 
-        Gizmos.color = UnityEngine.Color.black;
-        Gizmos.DrawWireCube(m_fireCollider.bounds.center, m_fireCollider.bounds.size);
-    }
+    //    Gizmos.color = UnityEngine.Color.black;
+    //    Gizmos.DrawWireCube(m_fireCollider.bounds.center, m_fireCollider.bounds.size);
+    //}
 
     public void deactivateFlamethrower()
   {
