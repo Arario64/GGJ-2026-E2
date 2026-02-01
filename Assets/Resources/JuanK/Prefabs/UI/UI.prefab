@@ -411,7 +411,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8780586411673056801}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnPlayFromMenuClicked
         m_Mode: 1
@@ -2629,7 +2629,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8780586411673056801}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnExitClicked
         m_Mode: 1
@@ -7024,7 +7024,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8780586411673056801}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnHowToPlayClicked
         m_Mode: 1
@@ -9066,9 +9066,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 722874058887872404}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OnBackClicked
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10040,7 +10040,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8780586411673056801}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnAudioClicked
         m_Mode: 1

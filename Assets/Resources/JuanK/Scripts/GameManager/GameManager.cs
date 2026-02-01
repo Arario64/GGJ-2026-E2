@@ -215,7 +215,7 @@ public class GameManager : MonoBehaviour
 
     Player.gameObject.SetActive(false);
     //StateMachine.Init(MainMenuState);
-    StateMachine.Init(PlayingState);
+    StateMachine.Init(MainMenuState);
   }
 
   // Start is called once before the first execution of Update after the MonoBehaviour is created
