@@ -547,7 +547,7 @@ public class UIManager : MonoBehaviour
 
   public void UpdateKeysText(int gotKeys)
   {
-    KeysText.text = gotKeys + " / " + GameManager.Instance.WinZone.KeysNeeded;
+    
   }
 
   public void AddMaskToInventory(Mask mask, bool isFirstMask = false)

@@ -478,10 +478,14 @@ public class Player : MonoBehaviour
 
     if (collision.CompareTag("Hazard") || collision.CompareTag("Explotion"))
     {
-      //TODO: Check if create a death state with animation
       _isDeth = true;
     }
 
+    if (collision.CompareTag("WinZone"))
+    {
+      GameManager.Instance.IsGameOver = true;
+      GameManager.Instance.IsGameWon = true;
+    }
   }
 
   private void OnTriggerStay2D(Collider2D collision)

@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
   private IA_Player m_playerInputActions;
   private Player m_player;
   private UIManager m_uiManager;
-  private WinZone m_winZone;
 
   private bool m_paused = false;
   private bool m_playing = false;
@@ -117,23 +116,6 @@ public class GameManager : MonoBehaviour
         m_player = FindAnyObjectByType<Player>();
       }
       return m_player;
-    }
-  }
-
-  public WinZone WinZone
-  {
-    get
-    {
-      if (m_winZone == null)
-      {
-        int winZones = FindObjectsByType<WinZone>(FindObjectsSortMode.None).Length;
-        if (winZones > 1)
-        {
-          throw new System.Exception("There should be only one WinZone in the scene, but found: " + winZones);
-        }
-        m_winZone = FindFirstObjectByType<WinZone>();
-      }
-      return m_winZone;
     }
   }
 

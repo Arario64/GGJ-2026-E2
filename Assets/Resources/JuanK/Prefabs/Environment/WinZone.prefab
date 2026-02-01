@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8227833061647702452}
   - component: {fileID: 1504027852991040196}
-  - component: {fileID: 2225773648928016198}
   m_Layer: 0
   m_Name: WinZone
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_TagString: WinZone
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -63,7 +62,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -79,16 +78,3 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2225773648928016198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3933770551326037094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0d6a5361e6a81046be97f077c74a89c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WinZone
-  m_keysNeeded: 5
