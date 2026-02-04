@@ -13,6 +13,7 @@ public class PlayingState : IState
 
     Cursor.visible = true;
     Cursor.lockState = CursorLockMode.None;
+    AudioManager.Instance.PlayMusic(MusicTag.Mazmorra_01);
   }
 
   public void Execute()

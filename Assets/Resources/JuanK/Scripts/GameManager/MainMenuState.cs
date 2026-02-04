@@ -14,6 +14,7 @@ public class MainMenuState : IState
     GameManager.Instance.InMainMenu = true;
     Cursor.visible = true;
     Cursor.lockState = CursorLockMode.None;
+    AudioManager.Instance.PlayMusic(MusicTag.Menu);
   }
 
   public void Execute()

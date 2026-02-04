@@ -19,6 +19,7 @@ public class GameOverState : IState
 
     Cursor.visible = true;
     Cursor.lockState = CursorLockMode.None;
+    AudioManager.Instance.PlayMusic(MusicTag.Menu);
   }
 
   public void Execute()
